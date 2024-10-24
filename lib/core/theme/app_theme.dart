@@ -1,5 +1,6 @@
 import 'package:figorate_mobile/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 extension HexColor on Color {
@@ -22,16 +23,10 @@ ThemeData _appTheme = ThemeData(
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      fixedSize: const Size(500, 50),
+      fixedSize: Size(250.w, 55.h),
       backgroundColor: AppColors.green,
-      foregroundColor: AppColors.black
-  ,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5),
-        side: BorderSide(
-          color: AppColors.black
-      ,
-        ),
+        borderRadius: BorderRadius.circular(7),
       ),
     ),
   ),
