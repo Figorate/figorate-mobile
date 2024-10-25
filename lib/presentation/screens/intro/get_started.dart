@@ -7,8 +7,7 @@ import 'package:figorate_mobile/core/theme/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GetStartedScreen extends StatelessWidget {
-  const GetStartedScreen
-({super.key});
+  const GetStartedScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +29,7 @@ class GetStartedScreen extends StatelessWidget {
           children: [
             SizedBox(height: 80.h),
             HighlightedText(
-              text: "Get Started To.\n Personalize \n Your Experience",
+              text: "Get Started To\n Personalize \n Your Experience",
               highlightWord: "Personalize",
               highlightColor: AppColors.lightGreen,
               defaultColor: AppColors.white,
@@ -39,8 +38,7 @@ class GetStartedScreen extends StatelessWidget {
             ),
             SizedBox(height: 40.h),
             CustomText(
-              text:
-                  'To create a personalized nutritions and training plan for You, built by Our team \nof experts in medical and fitness',
+              text: 'To create a personalized nutritions and training plan for You, built by Our team \nof experts in medical and fitness',
               color: AppColors.white,
               fontSize: 16.sp,
               textAlign: TextAlign.left,
@@ -48,7 +46,9 @@ class GetStartedScreen extends StatelessWidget {
             SizedBox(height: 100.h),
             Center(
               child: CustomButton(
-                onPressed: () {},
+                onPressed: () {
+                  navigationService.pushNamed("/gender");
+                },
                 text: 'Get Started',
                 fontWeight: FontWeight.w600,
                 backgroundColor: AppColors.white,
