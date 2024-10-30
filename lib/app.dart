@@ -1,6 +1,6 @@
 import 'package:figorate_mobile/core/theme/app_colors.dart';
 import 'package:figorate_mobile/core/theme/app_theme.dart';
-import 'package:figorate_mobile/presentation/screens/auth/register/gender.dart';
+import 'package:figorate_mobile/presentation/screens/auth/register/gender/gender.dart';
 import 'package:figorate_mobile/presentation/screens/intro/get_started.dart';
 import 'package:figorate_mobile/presentation/screens/splash/splash_screen.dart';
 import 'package:figorate_mobile/services/locator/service_locator.dart';

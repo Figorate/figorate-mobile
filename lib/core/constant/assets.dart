@@ -5,4 +5,5 @@ class Assets {
   static const String thirdPersonalizedIntro = 'assets/jpg/third-personalized-intro.jpg';
   static const String fourthPersonalizedIntro = 'assets/jpg/fourth-personalized-intro.jpg';
   static const String fifthPersonalizedIntro = 'assets/jpg/fifth-personalized-intro.jpg';
+  static const String genderLogo = 'assets/png/gender_icon.png';
 }

@@ -1,7 +1,9 @@
 import 'package:figorate_mobile/core/constant/assets.dart';
 import 'package:figorate_mobile/core/theme/app_colors.dart';
 import 'package:figorate_mobile/presentation/screens/carousel/carousel_view_model.dart';
+import 'package:figorate_mobile/presentation/widgets/custom_dialog.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_button.dart';
+import 'package:figorate_mobile/presentation/widgets/custom_carousel_indicator.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_text.dart';
 import 'package:figorate_mobile/presentation/widgets/text_highlighter.dart';
 import 'package:figorate_mobile/services/locator/service_locator.dart';
@@ -42,82 +44,60 @@ class CarouselScreen extends StatelessWidget {
                   fit: BoxFit.contain,
                 ),
               ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                  height: 380.h,
-                  decoration: BoxDecoration(
-                    color: AppColors.white,
-                    borderRadius: const BorderRadius.vertical(
-                      top: Radius.circular(15),
+              CustomBottomDialog(
+                height: 380.h,
+                content: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: PageView(
+                        controller: viewModel.pageController,
+                        onPageChanged: (int index) {
+                          viewModel.currentPage = index;
+                          viewModel.notifyListeners();
+                        },
+                        children: [
+                          _carouselItem(
+                              "Personalized Fitness\n Plans",
+                              "Get tailor-made workouts for your goals, whether it's losing weight, gaining muscle, or getting fit.",
+                              "Personalized"),
+                          _carouselItem(
+                              "Customized \nNutrition Programs",
+                              "Enjoy meal plans and dietary advice personalized to your needs and \npreferences.",
+                              "Nutrition"),
+                          _carouselItem(
+                              "Health Monitoring \nTools",
+                              "Track your progress with heart rate, sleep, and activity monitoring for \noptimal results.",
+                              "Monitoring"),
+                          _carouselItem(
+                              "Expert\n Consultations",
+                              "Access certified trainers, dietitians, and healthcare pros for personalized \nguidance and support.",
+                              "Expert"),
+                          _carouselItem(
+                              "Market \nPlace",
+                              "Access certified trainers, dietitians, and healthcare pros for personalized \nguidance and support.",
+                              "Market"),
+                        ],
+                      ),
                     ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(30),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: PageView(
-                            controller: viewModel.pageController,
-                            onPageChanged: (int index) {
-                              viewModel.currentPage = index;
-                              viewModel.notifyListeners();
-                            },
-                            children: [
-                              _carouselItem(
-                                  "Personalized Fitness\n Plans",
-                                  "Get tailor-made workouts for your goals, whether it's losing weight, gaining muscle, or getting fit.",
-                                  "Personalized"),
-                              _carouselItem(
-                                  "Customized \nNutrition Programs",
-                                  "Enjoy meal plans and dietary advice personalized to your needs and \npreferences.",
-                                  "Nutrition"),
-                              _carouselItem(
-                                  "Health Monitoring \nTools",
-                                  "Track your progress with heart rate, sleep, and activity monitoring for \noptimal results.",
-                                  "Monitoring"),
-                              _carouselItem(
-                                  "Expert\n Consultations",
-                                  "Access certified trainers, dietitians, and healthcare pros for personalized \nguidance and support.",
-                                  "Expert"),
-                              _carouselItem(
-                                  "Market \nPlace",
-                                  "Access certified trainers, dietitians, and healthcare pros for personalized \nguidance and support.",
-                                  "Market"),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 5.h),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: List.generate(5, (index) {
-                            return Container(
-                              margin: EdgeInsets.symmetric(horizontal: 5.w),
-                              width: viewModel.currentPage == index ? 26.w : 26.w,
-                              height: 4.h,
-                              decoration: BoxDecoration(
-                                color: viewModel.currentPage == index ? AppColors.green : AppColors.grey,
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                            );
-                          }),
-                        ),
-                        SizedBox(height: 30.h),
-                        CustomButton(
-                          onPressed: () {
-                            if (viewModel.currentPage == 4) {
-                              navigationService.pushNamed("/get-started");
-                            } else {
-                              viewModel.goToNextSlide();
-                            }
-                          },
-                          text: viewModel.currentPage == 4 ? 'Get started' : 'Next',
-                          textColor: AppColors.white,
-                        ),
-                      ],
+                    SizedBox(height: 5.h),
+                    CustomCarouselIndicator(
+                      currentPage: viewModel.currentPage,
+                      totalPages: _images.length,
                     ),
-                  ),
+                    SizedBox(height: 30.h),
+                    CustomButton(
+                      onPressed: () {
+                        if (viewModel.currentPage == 4) {
+                          navigationService.pushNamed("/get-started");
+                        } else {
+                          viewModel.goToNextSlide();
+                        }
+                      },
+                      text: viewModel.currentPage == 4 ? 'Get started' : 'Next',
+                      textColor: AppColors.white,
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -134,7 +114,7 @@ class CarouselScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-            child: HighlightedText(
+            child: CustomHighlightedText(
               text: title,
               highlightWord: highlightWord,
             ),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HighlightedText extends StatelessWidget {
+class CustomHighlightedText extends StatelessWidget {
   final String text;
   final String highlightWord;
   final Color? highlightColor;
@@ -11,7 +11,7 @@ class HighlightedText extends StatelessWidget {
   final TextAlign textAlign;
   final double fontSize;
 
-  const HighlightedText({
+  const CustomHighlightedText({
     super.key,
     required this.text,
     required this.highlightWord,
