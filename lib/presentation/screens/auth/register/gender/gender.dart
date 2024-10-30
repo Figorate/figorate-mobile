@@ -1,6 +1,6 @@
 import 'package:figorate_mobile/core/constant/assets.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_app_bar.dart';
-import 'package:figorate_mobile/presentation/widgets/custom_bottom_dialog.dart';
+import 'package:figorate_mobile/presentation/widgets/custom_dialog.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_button.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_carousel_indicator.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_gesture_button.dart';
@@ -16,7 +16,7 @@ class GenderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<GenderViewModel>.reactive(
+    return ViewModelBuilder.reactive(
       viewModelBuilder: () => GenderViewModel(),
       builder: (context, viewModel, _) {
         return Scaffold(
@@ -41,7 +41,7 @@ class GenderScreen extends StatelessWidget {
                           fontSize: 28.sp,
                         ),
                         Image.asset(
-                          Assets.genderLogo, 
+                          Assets.genderLogo,
                           width: 24.h,
                           height: 24.h,
                         ),
@@ -52,18 +52,18 @@ class GenderScreen extends StatelessWidget {
                     Column(
                       children: [
                         CustomGestureButton(
-                          selectedIndex: viewModel.selectedGender, // Use the selected gender index
-                          buttonTitles: const ['Male'], 
-                          onSelect: (index) {
-                            viewModel.selectGender(0); // Set to Male
+                          isSelected: viewModel.selectedGender == 0,
+                          buttonTitle: 'Male',
+                          onTap: () {
+                            viewModel.selectGender(0);
                           },
                         ),
                         SizedBox(height: 10.h),
                         CustomGestureButton(
-                          selectedIndex: viewModel.selectedGender, // Use the selected gender index
-                          buttonTitles: const ['Female'],
-                          onSelect: (index) {
-                            viewModel.selectGender(1); // Set to Female
+                          isSelected: viewModel.selectedGender == 1,
+                          buttonTitle: 'Female',
+                          onTap: () {
+                            viewModel.selectGender(1);
                           },
                         ),
                       ],
@@ -71,7 +71,7 @@ class GenderScreen extends StatelessWidget {
                     SizedBox(height: 30.h),
                     CustomButton(
                       onPressed: () {
-                        viewModel.goToNext(); 
+                        viewModel.goToNext();
                       },
                       text: 'Next',
                       textColor: AppColors.white,

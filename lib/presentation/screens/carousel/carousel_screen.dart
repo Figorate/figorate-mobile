@@ -1,7 +1,7 @@
 import 'package:figorate_mobile/core/constant/assets.dart';
 import 'package:figorate_mobile/core/theme/app_colors.dart';
 import 'package:figorate_mobile/presentation/screens/carousel/carousel_view_model.dart';
-import 'package:figorate_mobile/presentation/widgets/custom_bottom_dialog.dart';
+import 'package:figorate_mobile/presentation/widgets/custom_dialog.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_button.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_carousel_indicator.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_text.dart';

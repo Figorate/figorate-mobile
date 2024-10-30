@@ -4,45 +4,35 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:figorate_mobile/core/theme/app_colors.dart';
 
 class CustomGestureButton extends StatelessWidget {
-  final int selectedIndex;
-  final List<String> buttonTitles;
-  final ValueChanged<int> onSelect;
+  final bool isSelected;
+  final String buttonTitle;
+  final VoidCallback onTap;
 
   const CustomGestureButton({
     super.key,
-    required this.selectedIndex,
-    required this.buttonTitles,
-    required this.onSelect,
+    required this.isSelected,
+    required this.buttonTitle,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        border: Border.all(color: AppColors.grey, width: 1),
-        borderRadius: BorderRadius.circular(5.r),
-      ),
-      child: Column(
-        children: List.generate(buttonTitles.length, (index) {
-          return GestureDetector(
-            onTap: () => onSelect(index), // Call onSelect with the index
-            child: Container(
-              width: double.infinity,
-              padding: EdgeInsets.all(16.sp),
-              decoration: BoxDecoration(
-                color: selectedIndex == index ? AppColors.green : AppColors.white,
-                borderRadius: BorderRadius.circular(8.r),
-              ),
-              child: Center(
-                child: CustomText(
-                  text: buttonTitles[index], 
-                  color: selectedIndex == index ? AppColors.white : AppColors.black,
-                ),
-              ),
-            ),
-          );
-        }),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.all(16.sp),
+        decoration: BoxDecoration(
+          color: isSelected ? AppColors.green : AppColors.white,
+          borderRadius: BorderRadius.circular(8.r),
+          border: Border.all(color: AppColors.grey, width: 1),
+        ),
+        child: Center(
+          child: CustomText(
+            text: buttonTitle,
+            color: isSelected ? AppColors.white : AppColors.black,
+          ),
+        ),
       ),
     );
   }
