@@ -7,4 +7,7 @@ class AppColors {
   static Color lightGreen = HexColor.fromHex("#4EB867");
   static Color white = HexColor.fromHex('#FFFFFF');
   static Color grey = HexColor.fromHex("#CED0D4");
+  static Color transparent = HexColor.fromHex("#F8F8F8");
+  static Color deepYellow = HexColor.fromHex("#FFB525");
+  static Color deepWhite = HexColor.fromHex("#8A8A8A");
 }

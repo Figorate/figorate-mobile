@@ -5,6 +5,7 @@ import 'package:figorate_mobile/presentation/widgets/custom_button.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_carousel_indicator.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_gesture_button.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_text.dart';
+import 'package:figorate_mobile/services/locator/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:figorate_mobile/core/theme/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,8 +30,8 @@ class GenderScreen extends StatelessWidget {
                 content: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    CustomCarouselIndicator(
-                      currentPage: viewModel.currentPage,
+                    const CustomCarouselIndicator(
+                      currentPage: 0,
                       totalPages: 6,
                     ),
                     SizedBox(height: 50.h),
@@ -71,7 +72,7 @@ class GenderScreen extends StatelessWidget {
                     SizedBox(height: 30.h),
                     CustomButton(
                       onPressed: () {
-                        viewModel.goToNext();
+                        navigationService.pushNamed("/age");
                       },
                       text: 'Next',
                       textColor: AppColors.white,
