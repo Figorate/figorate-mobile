@@ -42,6 +42,7 @@ class GetStartedScreen extends StatelessWidget {
                   navigationService.pushNamed("/gender");
                 },
                 text: 'Get Started',
+                textColor: AppColors.green,
                 fontWeight: FontWeight.w600,
                 backgroundColor: AppColors.white,
               ),
