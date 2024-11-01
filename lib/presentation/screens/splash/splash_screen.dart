@@ -1,4 +1,4 @@
-import 'package:figorate_mobile/core/theme/constant/assets.dart';
+import 'package:figorate_mobile/core/constant/assets.dart';
 import 'package:figorate_mobile/presentation/screens/splash/splash_viewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';

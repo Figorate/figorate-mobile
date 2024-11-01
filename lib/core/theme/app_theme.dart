@@ -20,21 +20,6 @@ ThemeData _appTheme = ThemeData(
         foregroundColor: AppColors.green,
       )
   ),
-  elevatedButtonTheme: ElevatedButtonThemeData(
-    style: ElevatedButton.styleFrom(
-      fixedSize: const Size(500, 50),
-      backgroundColor: AppColors.green,
-      foregroundColor: AppColors.black
-  ,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5),
-        side: BorderSide(
-          color: AppColors.black
-      ,
-        ),
-      ),
-    ),
-  ),
   primarySwatch: Colors.grey,
 );
 

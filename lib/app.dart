@@ -1,5 +1,7 @@
 import 'package:figorate_mobile/core/theme/app_colors.dart';
 import 'package:figorate_mobile/core/theme/app_theme.dart';
+import 'package:figorate_mobile/presentation/screens/auth/register/gender/gender.dart';
+import 'package:figorate_mobile/presentation/screens/intro/get_started.dart';
 import 'package:figorate_mobile/presentation/screens/splash/splash_screen.dart';
 import 'package:figorate_mobile/services/locator/service_locator.dart';
 import 'package:flutter/material.dart';
@@ -30,10 +32,14 @@ class _MyAppState extends State<MyApp> {
           return GestureDetector(
             child: MaterialApp(
               navigatorKey: navigationService.navigatorKey,
-              title: 'Nzinger',
+              title: 'Figorate',
               debugShowCheckedModeBanner: false,
               theme: getApplicationTheme(),
               home: const SplashScreen(),
+              routes: {
+                '/get-started': (context) => const GetStartedScreen(),
+                '/gender': (context) => const GenderScreen(),
+              },
             ),
           );
         },
