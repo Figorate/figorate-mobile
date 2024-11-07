@@ -5,7 +5,6 @@ import 'package:figorate_mobile/presentation/screens/auth/register/gender/gender
 import 'package:figorate_mobile/presentation/screens/auth/register/health_goal/health_goal.dart';
 import 'package:figorate_mobile/presentation/screens/auth/register/medical_condition/medical_condition.dart';
 import 'package:figorate_mobile/presentation/screens/auth/register/nutrition_preference/nutrition_preference.dart';
-import 'package:figorate_mobile/presentation/screens/intro/get_started.dart';
 import 'package:figorate_mobile/presentation/screens/splash/splash_screen.dart';
 import 'package:figorate_mobile/services/locator/service_locator.dart';
 import 'package:flutter/material.dart';
