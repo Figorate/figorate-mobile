@@ -6,5 +6,8 @@ class Assets {
   static const String fourthPersonalizedIntro = 'assets/jpg/fourth-personalized-intro.jpg';
   static const String fifthPersonalizedIntro = 'assets/jpg/fifth-personalized-intro.jpg';
   static const String genderLogo = 'assets/png/gender_icon.png';
+  static const String medicalConditionLogo = 'assets/png/medical_condition.png';
+  static const String healthGoalLogo = 'assets/png/health_goal.png';
+  static const String nutritionPreferenceLogo = 'assets/png/nutrition_preference.png';
   static const String ageLogo = 'assets/png/age_icon.png';
 }

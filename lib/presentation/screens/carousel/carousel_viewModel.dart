@@ -25,6 +25,10 @@ class CarouselViewModel extends BaseViewModel {
     });
   }
 
+    void stopAutoSlide() {
+    _timer?.cancel();
+  }
+
   void goToNextSlide() {
     if (currentPage < 4) {
       currentPage++;

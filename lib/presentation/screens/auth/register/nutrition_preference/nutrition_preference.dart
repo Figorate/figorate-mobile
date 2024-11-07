@@ -1,4 +1,5 @@
 import 'package:figorate_mobile/core/constant/assets.dart';
+import 'package:figorate_mobile/presentation/screens/auth/register/health_goal/health_goal_viewModel.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_app_bar.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_dialog.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_button.dart';
@@ -10,15 +11,14 @@ import 'package:flutter/material.dart';
 import 'package:figorate_mobile/core/theme/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
-import 'gender_viewModel.dart';
 
-class GenderScreen extends StatelessWidget {
-  const GenderScreen({super.key});
+class NutritionPreferenceScreen extends StatelessWidget {
+  const NutritionPreferenceScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
-      viewModelBuilder: () => GenderViewModel(),
+      viewModelBuilder: () => HealthGoalViewmodel(),
       builder: (context, viewModel, _) {
         return Scaffold(
           appBar: CustomAppBar(arrowColor: AppColors.white),
@@ -31,18 +31,18 @@ class GenderScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     const CustomCarouselIndicator(
-                      currentPage: 0,
+                      currentPage: 4,
                       totalPages: 5,
                     ),
                     SizedBox(height: 50.h),
                     Row(
                       children: [
                         CustomText(
-                          text: 'Gender',
+                          text: 'Health Preference',
                           fontSize: 28.sp,
                         ),
                         Image.asset(
-                          Assets.genderLogo,
+                          Assets.nutritionPreferenceLogo,
                           width: 24.h,
                           height: 24.h,
                         ),
@@ -53,18 +53,50 @@ class GenderScreen extends StatelessWidget {
                     Column(
                       children: [
                         CustomGestureButton(
-                          isSelected: viewModel.selectedGender == 0,
-                          buttonTitle: 'Male',
+                          isSelected: viewModel.selectedHealthGoal == 0,
+                          buttonTitle: 'Vegan',
                           onTap: () {
-                            viewModel.selectGender(0);
+                            viewModel.selectHealthGoal(0);
                           },
                         ),
                         SizedBox(height: 10.h),
                         CustomGestureButton(
-                          isSelected: viewModel.selectedGender == 1,
-                          buttonTitle: 'Female',
+                          isSelected: viewModel.selectedHealthGoal == 1,
+                          buttonTitle: 'Vegeterian',
                           onTap: () {
-                            viewModel.selectGender(1);
+                            viewModel.selectHealthGoal(1);
+                          },
+                        ),
+                        SizedBox(height: 10.h),
+                        CustomGestureButton(
+                          isSelected: viewModel.selectedHealthGoal == 2,
+                          buttonTitle: 'Gluten-Free',
+                          onTap: () {
+                            viewModel.selectHealthGoal(2);
+                          },
+                        ),
+                        SizedBox(height: 10.h),
+                        CustomGestureButton(
+                          isSelected: viewModel.selectedHealthGoal == 3,
+                          buttonTitle: 'Dairy Free',
+                          onTap: () {
+                            viewModel.selectHealthGoal(3);
+                          },
+                        ),
+                        SizedBox(height: 10.h),
+                        CustomGestureButton(
+                          isSelected: viewModel.selectedHealthGoal == 4,
+                          buttonTitle: 'Pescetarian',
+                          onTap: () {
+                            viewModel.selectHealthGoal(4);
+                          },
+                        ),
+                        SizedBox(height: 10.h),
+                        CustomGestureButton(
+                          isSelected: viewModel.selectedHealthGoal == 5,
+                          buttonTitle: 'None',
+                          onTap: () {
+                            viewModel.selectHealthGoal(5);
                           },
                         ),
                       ],
@@ -72,7 +104,7 @@ class GenderScreen extends StatelessWidget {
                     SizedBox(height: 30.h),
                     CustomButton(
                       onPressed: () {
-                        navigationService.pushNamed("/age");
+                        navigationService.pushNamed("");
                       },
                       text: 'Next',
                       textColor: AppColors.white,

@@ -1,6 +1,5 @@
 import 'package:figorate_mobile/core/constant/assets.dart';
-import 'package:figorate_mobile/core/theme/app_colors.dart';
-import 'package:figorate_mobile/presentation/screens/carousel/carousel_view_model.dart';
+import 'package:figorate_mobile/presentation/screens/carousel/carousel_viewModel.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_dialog.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_button.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_carousel_indicator.dart';
@@ -86,17 +85,25 @@ class CarouselScreen extends StatelessWidget {
                       totalPages: _images.length,
                     ),
                     SizedBox(height: 30.h),
-                    CustomButton(
+                   CustomButton(
                       onPressed: () {
-                        if (viewModel.currentPage == 4) {
-                          navigationService.pushNamed("/get-started");
+                        if (viewModel.currentPage < _images.length - 1) {
+                          viewModel.pageController.animateToPage(
+                            viewModel.currentPage + 1,
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.easeIn,
+                          );
+                          viewModel.currentPage++;
+                          viewModel.notifyListeners();
                         } else {
-                          viewModel.goToNextSlide();
+                          viewModel.stopAutoSlide();
+                          navigationService.pushNamed("/get-started")?.then((_) {
+                            viewModel.startAutoSlide();
+                          });
                         }
                       },
-                      text: viewModel.currentPage == 4 ? 'Get started' : 'Next',
-                      textColor: AppColors.white,
-                    ),
+                      text: 'Next',
+                   )
                   ],
                 ),
               ),

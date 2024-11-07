@@ -1,5 +1,5 @@
 import 'package:figorate_mobile/core/constant/assets.dart';
-import 'package:figorate_mobile/presentation/screens/auth/register/age/age_view_model.dart';
+import 'package:figorate_mobile/presentation/screens/auth/register/age/age_viewModel.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_app_bar.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_dialog.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_button.dart';
@@ -72,10 +72,10 @@ class AgeScreen extends StatelessWidget {
                             onPressed: () {
                               navigationService.pushNamed("/back");
                             },
-                            width: 80.w,
-                            height: 20.h,
+                            width:80.w,
+                            height: 30.h,
                             borderRadius: 9.r,
-                            fontSize: 12.sp,
+                            fontSize: 10.sp,
                             backgroundColor: AppColors.transparent,
                             text: 'Clear',
                             textColor: AppColors.deepWhite,
@@ -86,9 +86,9 @@ class AgeScreen extends StatelessWidget {
                               navigationService.pushNamed("");
                             },
                             width: 80.w,
-                            height: 20.h,
+                            height: 30.h,
                             borderRadius: 9.r,
-                            fontSize: 12.sp,
+                            fontSize: 10.sp,
                             text: 'Apply',
                             backgroundColor: AppColors.green,
                             textColor: AppColors.white,
@@ -100,7 +100,7 @@ class AgeScreen extends StatelessWidget {
                     Center(
                       child: CustomButton(
                         onPressed: () {
-                          navigationService.pushNamed("/next");
+                          navigationService.pushNamed("/medical-condition");
                         },
                         text: 'Next',
                         textColor: AppColors.white,
