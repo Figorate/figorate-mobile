@@ -1,5 +1,7 @@
 import 'package:figorate_mobile/core/constant/assets.dart';
+import 'package:figorate_mobile/core/theme/app_colors.dart';
 import 'package:figorate_mobile/presentation/screens/carousel/carousel_viewModel.dart';
+import 'package:figorate_mobile/presentation/screens/intro/get_started.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_dialog.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_button.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_carousel_indicator.dart';
@@ -18,16 +20,13 @@ class CarouselScreen extends StatelessWidget {
     Assets.secondPersonalizedIntro,
     Assets.thirdPersonalizedIntro,
     Assets.fourthPersonalizedIntro,
-    Assets.fifthPersonalizedIntro,  
+    Assets.fifthPersonalizedIntro,
   ];
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => CarouselViewModel(),
-      onViewModelReady: (viewModel) {
-        viewModel.startAutoSlide();
-      },
       builder: (context, viewModel, _) {
         return Scaffold(
           body: Stack(
@@ -85,25 +84,19 @@ class CarouselScreen extends StatelessWidget {
                       totalPages: _images.length,
                     ),
                     SizedBox(height: 30.h),
-                   CustomButton(
-                      onPressed: () {
-                        if (viewModel.currentPage < _images.length - 1) {
-                          viewModel.pageController.animateToPage(
-                            viewModel.currentPage + 1,
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.easeIn,
-                          );
-                          viewModel.currentPage++;
-                          viewModel.notifyListeners();
-                        } else {
-                          viewModel.stopAutoSlide();
-                          navigationService.pushNamed("/get-started")?.then((_) {
-                            viewModel.startAutoSlide();
-                          });
-                        }
-                      },
-                      text: 'Next',
-                   )
+                  CustomButton(
+                    onPressed: () {
+                      if (viewModel.currentPage < 4) {
+                        viewModel.goToNextSlide();
+                      } else {
+                        navigationService.pushAndRemoveUntil(
+                          const GetStartedScreen(),
+                        );
+                      }
+                    },
+                    text: 'Next',
+                    textColor: AppColors.white,
+                  )
                   ],
                 ),
               ),

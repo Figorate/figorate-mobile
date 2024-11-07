@@ -41,7 +41,6 @@ class _MyAppState extends State<MyApp> {
               theme: getApplicationTheme(),
               home: const SplashScreen(),
               routes: {
-                '/get-started': (context) => const GetStartedScreen(),
                 '/gender': (context) => const GenderScreen(),
                 '/age': (context) => const AgeScreen(),
                 "/medical-condition" : (context) => const MedicalConditionScreen(),
