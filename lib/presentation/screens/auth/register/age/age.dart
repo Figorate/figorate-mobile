@@ -45,7 +45,6 @@ class AgeScreen extends StatelessWidget {
                           width: 24.h,
                           height: 24.h,
                         ),
-                        // SizedBox(width: 10.w),
                       ],
                     ),
                     SizedBox(height: 10.h),
@@ -84,7 +83,7 @@ class AgeScreen extends StatelessWidget {
                           SizedBox(width: 10.w),
                           CustomButton(
                             onPressed: () {
-                              navigationService.pushNamed("/");
+                              navigationService.pushNamed("");
                             },
                             width: 80.w,
                             height: 20.h,
