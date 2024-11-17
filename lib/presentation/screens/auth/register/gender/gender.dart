@@ -43,7 +43,7 @@ class GenderScreen extends StatelessWidget {
                         ),
                         Image.asset(
                           Assets.genderLogo,
-                          width: 24.h,
+                          width: 24.w,
                           height: 24.h,
                         ),
                         SizedBox(width: 10.w),

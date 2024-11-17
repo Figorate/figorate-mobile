@@ -7,7 +7,6 @@ class CarouselViewModel extends BaseViewModel {
 
   CarouselViewModel();
 
-  // Navigate to the next slide
   void goToNextSlide() {
     if (currentPage < 4) {
       currentPage++;

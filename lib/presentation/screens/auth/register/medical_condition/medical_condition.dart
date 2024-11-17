@@ -20,6 +20,14 @@ class MedicalConditionScreen extends StatelessWidget {
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => MedicalConditionViewmodel(),
       builder: (context, viewModel, _) {
+        final List<String> conditions = [
+          'Cardiovascular Disease',
+          'Kidney Disease',
+          'Hypertension',
+          'Diabetes',
+          'High Cholesterol',
+          'None of the above',
+        ];
         return Scaffold(
           appBar: CustomAppBar(arrowColor: AppColors.white),
           body: Stack(
@@ -43,7 +51,7 @@ class MedicalConditionScreen extends StatelessWidget {
                         ),
                         Image.asset(
                           Assets.medicalConditionLogo,
-                          width: 24.h,
+                          width: 24.w,
                           height: 24.h,
                         ),
                         SizedBox(width: 10.w),
@@ -51,55 +59,21 @@ class MedicalConditionScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 30.h),
                     Column(
-                      children: [
-                        CustomGestureButton(
-                          isSelected: viewModel.selectedMedicalCondition == 0,
-                          buttonTitle: 'Cardiovascular Disease',
-                          onTap: () {
-                            viewModel.selectMedicalCondition(0);
-                          },
+                      children: List.generate(
+                        conditions.length,
+                        (index) => Column(
+                          children: [
+                            CustomGestureButton(
+                              isSelected: viewModel.selectedMedicalConditions.contains(index),
+                              buttonTitle: conditions[index],
+                              onTap: () {
+                                viewModel.toggleMedicalCondition(index);
+                              },
+                            ),
+                            SizedBox(height: 10.h),
+                          ],
                         ),
-                        SizedBox(height: 10.h),
-                        CustomGestureButton(
-                          isSelected: viewModel.selectedMedicalCondition == 1,
-                          buttonTitle: 'Kidney Disease',
-                          onTap: () {
-                            viewModel.selectMedicalCondition(1);
-                          },
-                        ),
-                        SizedBox(height: 10.h),
-                        CustomGestureButton(
-                          isSelected: viewModel.selectedMedicalCondition == 2,
-                          buttonTitle: 'Hypertension',
-                          onTap: () {
-                            viewModel.selectMedicalCondition(2);
-                          },
-                        ),
-                        SizedBox(height: 10.h),
-                        CustomGestureButton(
-                          isSelected: viewModel.selectedMedicalCondition == 3,
-                          buttonTitle: 'Diabetes',
-                          onTap: () {
-                            viewModel.selectMedicalCondition(3);
-                          },
-                        ),
-                        SizedBox(height: 10.h),
-                        CustomGestureButton(
-                          isSelected: viewModel.selectedMedicalCondition == 4,
-                          buttonTitle: 'High Cholesterol',
-                          onTap: () {
-                            viewModel.selectMedicalCondition(4);
-                          },
-                        ),
-                        SizedBox(height: 10.h),
-                        CustomGestureButton(
-                          isSelected: viewModel.selectedMedicalCondition == 5,
-                          buttonTitle: 'None of the above',
-                          onTap: () {
-                            viewModel.selectMedicalCondition(5);
-                          },
-                        ),
-                      ],
+                      ),
                     ),
                     SizedBox(height: 30.h),
                     CustomButton(

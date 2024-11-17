@@ -20,6 +20,14 @@ class HealthGoalScreen extends StatelessWidget {
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => HealthGoalViewmodel(),
       builder: (context, viewModel, _) {
+        final List<String> healthGoal = [
+          'Vegan',
+          'Vegeterian',
+          'Gluten-Free',
+          'Dairy Free',
+          'Pescetarian',
+          'None',
+        ];
         return Scaffold(
           appBar: CustomAppBar(arrowColor: AppColors.white),
           body: Stack(
@@ -43,7 +51,7 @@ class HealthGoalScreen extends StatelessWidget {
                         ),
                         Image.asset(
                           Assets.healthGoalLogo,
-                          width: 24.h,
+                          width: 24.w,
                           height: 24.h,
                         ),
                         SizedBox(width: 10.w),
@@ -51,47 +59,21 @@ class HealthGoalScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 30.h),
                     Column(
-                      children: [
-                        CustomGestureButton(
-                          isSelected: viewModel.selectedHealthGoal == 0,
-                          buttonTitle: 'Weight Loss',
-                          onTap: () {
-                            viewModel.selectHealthGoal(0);
-                          },
+                      children: List.generate(
+                        healthGoal.length,
+                        (index) => Column(
+                          children: [
+                            CustomGestureButton(
+                              isSelected: viewModel.selectedHealthGoal.contains(index),
+                              buttonTitle: healthGoal[index],
+                              onTap: () {
+                                viewModel.toggleHealthGoal(index);
+                              },
+                            ),
+                            SizedBox(height: 10.h),
+                          ],
                         ),
-                        SizedBox(height: 10.h),
-                        CustomGestureButton(
-                          isSelected: viewModel.selectedHealthGoal == 1,
-                          buttonTitle: 'Weight Gain',
-                          onTap: () {
-                            viewModel.selectHealthGoal(1);
-                          },
-                        ),
-                        SizedBox(height: 10.h),
-                        CustomGestureButton(
-                          isSelected: viewModel.selectedHealthGoal == 2,
-                          buttonTitle: 'Improved Fitness',
-                          onTap: () {
-                            viewModel.selectHealthGoal(2);
-                          },
-                        ),
-                        SizedBox(height: 10.h),
-                        CustomGestureButton(
-                          isSelected: viewModel.selectedHealthGoal == 3,
-                          buttonTitle: 'Improved Nutrition',
-                          onTap: () {
-                            viewModel.selectHealthGoal(3);
-                          },
-                        ),
-                        SizedBox(height: 10.h),
-                        CustomGestureButton(
-                          isSelected: viewModel.selectedHealthGoal == 4,
-                          buttonTitle: 'Stress Management',
-                          onTap: () {
-                            viewModel.selectHealthGoal(4);
-                          },
-                        ),
-                      ],
+                      ),
                     ),
                     SizedBox(height: 30.h),
                     CustomButton(

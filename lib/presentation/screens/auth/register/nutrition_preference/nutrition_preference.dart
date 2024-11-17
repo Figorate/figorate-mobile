@@ -1,5 +1,5 @@
 import 'package:figorate_mobile/core/constant/assets.dart';
-import 'package:figorate_mobile/presentation/screens/auth/register/health_goal/health_goal_viewModel.dart';
+import 'package:figorate_mobile/presentation/screens/auth/register/nutrition_preference/nutrition_preference_viewModel.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_app_bar.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_dialog.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_button.dart';
@@ -18,8 +18,16 @@ class NutritionPreferenceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
-      viewModelBuilder: () => HealthGoalViewmodel(),
+      viewModelBuilder: () => NutritionPreferenceViewmodel(),
       builder: (context, viewModel, _) {
+        final List<String> nutritionPreference = [
+          'Vegan',
+          'Vegeterian',
+          'Gluten-Free',
+          'Dairy Free',
+          'Pescetarian',
+          'None',
+        ];
         return Scaffold(
           appBar: CustomAppBar(arrowColor: AppColors.white),
           body: Stack(
@@ -43,7 +51,7 @@ class NutritionPreferenceScreen extends StatelessWidget {
                         ),
                         Image.asset(
                           Assets.nutritionPreferenceLogo,
-                          width: 24.h,
+                          width: 24.w,
                           height: 24.h,
                         ),
                         SizedBox(width: 10.w),
@@ -51,55 +59,21 @@ class NutritionPreferenceScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 30.h),
                     Column(
-                      children: [
-                        CustomGestureButton(
-                          isSelected: viewModel.selectedHealthGoal == 0,
-                          buttonTitle: 'Vegan',
-                          onTap: () {
-                            viewModel.selectHealthGoal(0);
-                          },
+                      children: List.generate(
+                        nutritionPreference.length,
+                        (index) => Column(
+                          children: [
+                            CustomGestureButton(
+                              isSelected: viewModel.selectedHealthGoal.contains(index),
+                              buttonTitle: nutritionPreference[index],
+                              onTap: () {
+                                viewModel.toggleNutritionPreference(index);
+                              },
+                            ),
+                            SizedBox(height: 10.h),
+                          ],
                         ),
-                        SizedBox(height: 10.h),
-                        CustomGestureButton(
-                          isSelected: viewModel.selectedHealthGoal == 1,
-                          buttonTitle: 'Vegeterian',
-                          onTap: () {
-                            viewModel.selectHealthGoal(1);
-                          },
-                        ),
-                        SizedBox(height: 10.h),
-                        CustomGestureButton(
-                          isSelected: viewModel.selectedHealthGoal == 2,
-                          buttonTitle: 'Gluten-Free',
-                          onTap: () {
-                            viewModel.selectHealthGoal(2);
-                          },
-                        ),
-                        SizedBox(height: 10.h),
-                        CustomGestureButton(
-                          isSelected: viewModel.selectedHealthGoal == 3,
-                          buttonTitle: 'Dairy Free',
-                          onTap: () {
-                            viewModel.selectHealthGoal(3);
-                          },
-                        ),
-                        SizedBox(height: 10.h),
-                        CustomGestureButton(
-                          isSelected: viewModel.selectedHealthGoal == 4,
-                          buttonTitle: 'Pescetarian',
-                          onTap: () {
-                            viewModel.selectHealthGoal(4);
-                          },
-                        ),
-                        SizedBox(height: 10.h),
-                        CustomGestureButton(
-                          isSelected: viewModel.selectedHealthGoal == 5,
-                          buttonTitle: 'None',
-                          onTap: () {
-                            viewModel.selectHealthGoal(5);
-                          },
-                        ),
-                      ],
+                      ),
                     ),
                     SizedBox(height: 30.h),
                     CustomButton(

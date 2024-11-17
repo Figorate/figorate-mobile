@@ -1,12 +1,17 @@
 import 'package:stacked/stacked.dart';
 
 class MedicalConditionViewmodel extends BaseViewModel {
-  int _selectedMedicalCondition = -1;
-  int get selectedMedicalCondition => _selectedMedicalCondition;
+  final List<int> _selectedMedicalConditions = [];
+  List<int> get selectedMedicalConditions => _selectedMedicalConditions;
 
-  void selectMedicalCondition(int index) {
-    _selectedMedicalCondition = index;
-    print("Selected Medical Condition Index: $_selectedMedicalCondition");
+  void toggleMedicalCondition(int index) {
+    if (_selectedMedicalConditions.contains(index)) {
+      _selectedMedicalConditions.remove(index);
+      print("Removed Medical Condition Index: $index");
+    } else {
+      _selectedMedicalConditions.add(index);
+      print("Added Medical Condition Index: $index");
+    }
     notifyListeners();
   }
 }

@@ -42,7 +42,7 @@ class AgeScreen extends StatelessWidget {
                         ),
                         Image.asset(
                           Assets.ageLogo,
-                          width: 24.h,
+                          width: 24.w,
                           height: 24.h,
                         ),
                       ],
@@ -63,39 +63,39 @@ class AgeScreen extends StatelessWidget {
                         },
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          CustomButton(
-                            onPressed: () {
-                              navigationService.pushNamed("/back");
-                            },
-                            width:80.w,
-                            height: 30.h,
-                            borderRadius: 9.r,
-                            fontSize: 10.sp,
-                            backgroundColor: AppColors.transparent,
-                            text: 'Clear',
-                            textColor: AppColors.deepWhite,
-                          ),
-                          SizedBox(width: 10.w),
-                          CustomButton(
-                            onPressed: () {
-                              navigationService.pushNamed("");
-                            },
-                            width: 80.w,
-                            height: 30.h,
-                            borderRadius: 9.r,
-                            fontSize: 10.sp,
-                            text: 'Apply',
-                            backgroundColor: AppColors.green,
-                            textColor: AppColors.white,
-                          ),
-                        ],
-                      ),
-                    ),
+                    // Align(
+                    //   alignment: Alignment.centerRight,
+                    //   child: Row(
+                    //     mainAxisSize: MainAxisSize.min,
+                    //     children: [
+                    //       CustomButton(
+                    //         onPressed: () {
+                    //           navigationService.pushNamed("/back");
+                    //         },
+                    //         width:80.w,
+                    //         height: 30.h,
+                    //         borderRadius: 9.r,
+                    //         fontSize: 10.sp,
+                    //         backgroundColor: AppColors.transparent,
+                    //         text: 'Clear',
+                    //         textColor: AppColors.deepWhite,
+                    //       ),
+                    //       SizedBox(width: 10.w),
+                    //       CustomButton(
+                    //         onPressed: () {
+                    //           navigationService.pushNamed("");
+                    //         },
+                    //         width: 80.w,
+                    //         height: 30.h,
+                    //         borderRadius: 9.r,
+                    //         fontSize: 10.sp,
+                    //         text: 'Apply',
+                    //         backgroundColor: AppColors.green,
+                    //         textColor: AppColors.white,
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
                     SizedBox(height: 50.h),
                     Center(
                       child: CustomButton(
