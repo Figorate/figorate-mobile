@@ -70,7 +70,7 @@ class PincodeScreen extends StatelessWidget {
                     SizedBox(height: 30.h),
                     CustomButton(
                       onPressed: () {
-                        navigationService.pushNamed("");
+                        navigationService.pushNamed("/registeration");
                       },
                       text: 'Confirm',
                       textColor: AppColors.green,

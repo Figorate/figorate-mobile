@@ -1,5 +1,5 @@
 import 'package:figorate_mobile/core/constant/assets.dart';
-import 'package:figorate_mobile/presentation/screens/auth/register/age/age_viewModel.dart';
+import 'package:figorate_mobile/presentation/screens/auth/age/age_viewModel.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_app_bar.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_dialog.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_button.dart';

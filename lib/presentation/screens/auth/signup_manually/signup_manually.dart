@@ -1,32 +1,23 @@
 import 'package:figorate_mobile/core/constant/assets.dart';
-import 'package:figorate_mobile/presentation/screens/auth/register/health_goal/health_goal_viewModel.dart';
+import 'package:figorate_mobile/presentation/screens/auth/signup_manually/signup_manually_viewmodel.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_app_bar.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_dialog.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_button.dart';
-import 'package:figorate_mobile/presentation/widgets/custom_carousel_indicator.dart';
-import 'package:figorate_mobile/presentation/widgets/custom_gesture_button.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_text.dart';
+import 'package:figorate_mobile/core/theme/app_colors.dart';
 import 'package:figorate_mobile/services/locator/service_locator.dart';
 import 'package:flutter/material.dart';
-import 'package:figorate_mobile/core/theme/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 
-class HealthGoalScreen extends StatelessWidget {
-  const HealthGoalScreen({super.key});
+class SignupManuallyScreen extends StatelessWidget {
+  const SignupManuallyScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
-      viewModelBuilder: () => HealthGoalViewmodel(),
+      viewModelBuilder: () => SignupManuallyViewmodel(),
       builder: (context, viewModel, _) {
-        final List<String> healthGoal = [
-          'Weight Loss',
-          'Weight Gain',
-          'Improved Fitness',
-          'Improved Nutrition',
-          'Stress Management',
-        ];
         return Scaffold(
           appBar: CustomAppBar(arrowColor: AppColors.white),
           body: Stack(
@@ -36,20 +27,16 @@ class HealthGoalScreen extends StatelessWidget {
                 height: 650.h,
                 content: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const CustomCarouselIndicator(
-                      currentPage: 3,
-                      totalPages: 5,
-                    ),
-                    SizedBox(height: 50.h),
                     Row(
                       children: [
                         CustomText(
-                          text: 'Health Goal',
+                          text: 'Welcome Back',
                           fontSize: 28.sp,
                         ),
                         Image.asset(
-                          Assets.healthGoalLogo,
+                          Assets.signInLogo,
                           width: 24.w,
                           height: 24.h,
                         ),
@@ -57,30 +44,38 @@ class HealthGoalScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: 30.h),
-                    Column(
-                      children: List.generate(
-                        healthGoal.length,
-                        (index) => Column(
-                          children: [
-                            CustomGestureButton(
-                              isSelected: viewModel.selectedHealthGoal.contains(index),
-                              buttonTitle: healthGoal[index],
-                              onTap: () {
-                                viewModel.toggleHealthGoal(index);
-                              },
-                            ),
-                            SizedBox(height: 10.h),
-                          ],
-                        ),
-                      ),
+                    // CustomInputField(
+                    //   labelText: 'Email',
+                    //   keyboardType: TextInputType.emailAddress,
+                    //   errorText: viewModel.emailError,
+                    //   onChanged: viewModel.onEmailChanged,
+                    // ),
+                    // SizedBox(height: 20.h),
+                    // CustomInputField(
+                    //   labelText: 'Password',
+                    //   obscureText: true,
+                    //   errorText: viewModel.passwordError,
+                    //   onChanged: viewModel.onPasswordChanged,
+                    // ),
+                    SizedBox(height: 30.h),
+                    Center(
+                      child: CustomText(
+                          text: "Forget Password?",
+                          fontWeight: FontWeight.w700,
+                          onTap: () {
+                            navigationService.pushNamed("");
+                          }),
                     ),
                     SizedBox(height: 30.h),
                     CustomButton(
                       onPressed: () {
-                        navigationService.pushNamed("/nutrition-preference");
+                        navigationService.pushNamed("/pincode");
                       },
-                      text: 'Next',
+                      text: 'Login',
                       textColor: AppColors.white,
+                      // isEnabled: viewModel.isFormValid,
+                      height: 45.h,
+                      width: 500.w,
                     ),
                   ],
                 ),

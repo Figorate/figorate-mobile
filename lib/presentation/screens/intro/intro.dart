@@ -1,4 +1,4 @@
-import 'package:figorate_mobile/presentation/screens/carousel/carousel_screen.dart';
+import 'package:figorate_mobile/presentation/screens/carousel/carousel.dart';
 import 'package:flutter/material.dart';
 
 

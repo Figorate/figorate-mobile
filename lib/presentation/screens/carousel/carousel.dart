@@ -2,11 +2,10 @@ import 'package:figorate_mobile/core/constant/assets.dart';
 import 'package:figorate_mobile/core/theme/app_colors.dart';
 import 'package:figorate_mobile/presentation/screens/carousel/carousel_viewModel.dart';
 import 'package:figorate_mobile/presentation/screens/intro/get_started.dart';
+import 'package:figorate_mobile/presentation/widgets/carousel_item.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_dialog.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_button.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_carousel_indicator.dart';
-import 'package:figorate_mobile/presentation/widgets/custom_text.dart';
-import 'package:figorate_mobile/presentation/widgets/text_highlighter.dart';
 import 'package:figorate_mobile/services/locator/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -54,23 +53,23 @@ class CarouselScreen extends StatelessWidget {
                           viewModel.currentPage = index;
                           viewModel.notifyListeners();
                         },
-                        children: [
-                          _carouselItem(
-                              "Customized \nNutrition Programs",
-                              "Enjoy meal plans and dietary advice personalized to your needs and \npreferences.",
-                              "Nutrition"),
-                          _carouselItem(
-                              "Health Monitoring \nTools",
-                              "Track your progress with heart rate, sleep, and activity monitoring for \noptimal results.",
-                              "Monitoring"),
-                          _carouselItem(
-                              "Expert\n Consultations",
-                              "Access certified trainers, dietitians, and healthcare pros for personalized \nguidance and support.",
-                              "Expert"),
-                          _carouselItem(
-                              "Market \nPlace",
-                              "Access certified trainers, dietitians, and healthcare pros for personalized \nguidance and support.",
-                              "Market"),
+                        children: const [
+                          CarouselItemScreen(
+                              title: "Customized \nNutrition Programs",
+                              description: "Enjoy meal plans and dietary advice personalized to your needs and \npreferences.",
+                              highlightWord: "Nutrition"),
+                          CarouselItemScreen(
+                              title: "Health Monitoring \nTools",
+                              description: "Track your progress with heart rate, sleep, and activity monitoring for \noptimal results.",
+                              highlightWord: "Monitoring"),
+                          CarouselItemScreen(
+                              title: "Expert\n Consultations",
+                              description: "Access certified trainers, dietitians, and healthcare pros for personalized \nguidance and support.",
+                              highlightWord: "Expert"),
+                          CarouselItemScreen(
+                              title: "Market \nPlace",
+                              description: "Access certified trainers, dietitians, and healthcare pros for personalized \nguidance and support.",
+                              highlightWord: "Market"),
                         ],
                       ),
                     ),
@@ -100,29 +99,6 @@ class CarouselScreen extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-
-  Widget _carouselItem(String title, String description, String highlightWord) {
-    return Container(
-      color: Colors.transparent,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: CustomHighlightedText(
-              text: title,
-              highlightWord: highlightWord,
-            ),
-          ),
-          SizedBox(height: 25.h),
-          CustomText(
-            text: description,
-            fontSize: 16.sp,
-            textAlign: TextAlign.center,
-          ),
-        ],
-      ),
     );
   }
 }
