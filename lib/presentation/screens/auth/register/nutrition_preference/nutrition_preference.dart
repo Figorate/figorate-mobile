@@ -78,7 +78,7 @@ class NutritionPreferenceScreen extends StatelessWidget {
                     SizedBox(height: 30.h),
                     CustomButton(
                       onPressed: () {
-                        navigationService.pushNamed("");
+                        navigationService.pushNamed("/log-in");
                       },
                       text: 'Next',
                       textColor: AppColors.white,
