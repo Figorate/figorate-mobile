@@ -56,10 +56,6 @@ class CarouselScreen extends StatelessWidget {
                         },
                         children: [
                           _carouselItem(
-                              "Personalized Fitness\n Plans",
-                              "Get tailor-made workouts for your goals, whether it's losing weight, gaining muscle, or getting fit.",
-                              "Personalized"),
-                          _carouselItem(
                               "Customized \nNutrition Programs",
                               "Enjoy meal plans and dietary advice personalized to your needs and \npreferences.",
                               "Nutrition"),
