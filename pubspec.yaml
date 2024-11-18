@@ -39,9 +39,9 @@ dependencies:
   dio:
   get_it:
   get:
-  provider:
   overlay_support:
   stacked:
+  pin_code_fields:
   google_fonts:
 
 

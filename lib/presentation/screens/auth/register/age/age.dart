@@ -1,5 +1,5 @@
 import 'package:figorate_mobile/core/constant/assets.dart';
-import 'package:figorate_mobile/presentation/screens/auth/register/age/age_view_model.dart';
+import 'package:figorate_mobile/presentation/screens/auth/register/age/age_viewModel.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_app_bar.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_dialog.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_button.dart';
@@ -42,10 +42,9 @@ class AgeScreen extends StatelessWidget {
                         ),
                         Image.asset(
                           Assets.ageLogo,
-                          width: 24.h,
+                          width: 24.w,
                           height: 24.h,
                         ),
-                        // SizedBox(width: 10.w),
                       ],
                     ),
                     SizedBox(height: 10.h),
@@ -64,44 +63,44 @@ class AgeScreen extends StatelessWidget {
                         },
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          CustomButton(
-                            onPressed: () {
-                              navigationService.pushNamed("/back");
-                            },
-                            width: 80.w,
-                            height: 20.h,
-                            borderRadius: 9.r,
-                            fontSize: 12.sp,
-                            backgroundColor: AppColors.transparent,
-                            text: 'Clear',
-                            textColor: AppColors.deepWhite,
-                          ),
-                          SizedBox(width: 10.w),
-                          CustomButton(
-                            onPressed: () {
-                              navigationService.pushNamed("/");
-                            },
-                            width: 80.w,
-                            height: 20.h,
-                            borderRadius: 9.r,
-                            fontSize: 12.sp,
-                            text: 'Apply',
-                            backgroundColor: AppColors.green,
-                            textColor: AppColors.white,
-                          ),
-                        ],
-                      ),
-                    ),
+                    // Align(
+                    //   alignment: Alignment.centerRight,
+                    //   child: Row(
+                    //     mainAxisSize: MainAxisSize.min,
+                    //     children: [
+                    //       CustomButton(
+                    //         onPressed: () {
+                    //           navigationService.pushNamed("/back");
+                    //         },
+                    //         width:80.w,
+                    //         height: 30.h,
+                    //         borderRadius: 9.r,
+                    //         fontSize: 10.sp,
+                    //         backgroundColor: AppColors.transparent,
+                    //         text: 'Clear',
+                    //         textColor: AppColors.deepWhite,
+                    //       ),
+                    //       SizedBox(width: 10.w),
+                    //       CustomButton(
+                    //         onPressed: () {
+                    //           navigationService.pushNamed("");
+                    //         },
+                    //         width: 80.w,
+                    //         height: 30.h,
+                    //         borderRadius: 9.r,
+                    //         fontSize: 10.sp,
+                    //         text: 'Apply',
+                    //         backgroundColor: AppColors.green,
+                    //         textColor: AppColors.white,
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
                     SizedBox(height: 50.h),
                     Center(
                       child: CustomButton(
                         onPressed: () {
-                          navigationService.pushNamed("/next");
+                          navigationService.pushNamed("/medical-condition");
                         },
                         text: 'Next',
                         textColor: AppColors.white,

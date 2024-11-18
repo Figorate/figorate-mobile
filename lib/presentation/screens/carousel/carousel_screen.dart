@@ -1,6 +1,7 @@
 import 'package:figorate_mobile/core/constant/assets.dart';
 import 'package:figorate_mobile/core/theme/app_colors.dart';
-import 'package:figorate_mobile/presentation/screens/carousel/carousel_view_model.dart';
+import 'package:figorate_mobile/presentation/screens/carousel/carousel_viewModel.dart';
+import 'package:figorate_mobile/presentation/screens/intro/get_started.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_dialog.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_button.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_carousel_indicator.dart';
@@ -19,16 +20,13 @@ class CarouselScreen extends StatelessWidget {
     Assets.secondPersonalizedIntro,
     Assets.thirdPersonalizedIntro,
     Assets.fourthPersonalizedIntro,
-    Assets.fifthPersonalizedIntro,  
+    Assets.fifthPersonalizedIntro,
   ];
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => CarouselViewModel(),
-      onViewModelReady: (viewModel) {
-        viewModel.startAutoSlide();
-      },
       builder: (context, viewModel, _) {
         return Scaffold(
           body: Stack(
@@ -58,10 +56,6 @@ class CarouselScreen extends StatelessWidget {
                         },
                         children: [
                           _carouselItem(
-                              "Personalized Fitness\n Plans",
-                              "Get tailor-made workouts for your goals, whether it's losing weight, gaining muscle, or getting fit.",
-                              "Personalized"),
-                          _carouselItem(
                               "Customized \nNutrition Programs",
                               "Enjoy meal plans and dietary advice personalized to your needs and \npreferences.",
                               "Nutrition"),
@@ -86,17 +80,19 @@ class CarouselScreen extends StatelessWidget {
                       totalPages: _images.length,
                     ),
                     SizedBox(height: 30.h),
-                    CustomButton(
-                      onPressed: () {
-                        if (viewModel.currentPage == 4) {
-                          navigationService.pushNamed("/get-started");
-                        } else {
-                          viewModel.goToNextSlide();
-                        }
-                      },
-                      text: viewModel.currentPage == 4 ? 'Get started' : 'Next',
-                      textColor: AppColors.white,
-                    ),
+                  CustomButton(
+                    onPressed: () {
+                      if (viewModel.currentPage < 4) {
+                        viewModel.goToNextSlide();
+                      } else {
+                        navigationService.pushAndRemoveUntil(
+                          const GetStartedScreen(),
+                        );
+                      }
+                    },
+                    text: 'Next',
+                    textColor: AppColors.white,
+                  )
                   ],
                 ),
               ),

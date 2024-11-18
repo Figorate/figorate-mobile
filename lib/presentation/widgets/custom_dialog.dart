@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:figorate_mobile/core/theme/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomBottomDialog extends StatelessWidget {
   final double height;
   final Widget content;
+  final Color? backgroundColor;
 
   const CustomBottomDialog({
     super.key,
     required this.height,
     required this.content,
+    this.backgroundColor,
   });
 
   @override
@@ -18,9 +21,9 @@ class CustomBottomDialog extends StatelessWidget {
       child: Container(
         height: height,
         decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: const BorderRadius.vertical(
-            top: Radius.circular(15),
+          color: backgroundColor ?? AppColors.white,
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(15.r),
           ),
         ),
         child: Padding(

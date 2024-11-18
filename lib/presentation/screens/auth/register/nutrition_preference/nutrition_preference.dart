@@ -1,4 +1,5 @@
 import 'package:figorate_mobile/core/constant/assets.dart';
+import 'package:figorate_mobile/presentation/screens/auth/register/nutrition_preference/nutrition_preference_viewModel.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_app_bar.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_dialog.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_button.dart';
@@ -10,16 +11,23 @@ import 'package:flutter/material.dart';
 import 'package:figorate_mobile/core/theme/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
-import 'gender_viewModel.dart';
 
-class GenderScreen extends StatelessWidget {
-  const GenderScreen({super.key});
+class NutritionPreferenceScreen extends StatelessWidget {
+  const NutritionPreferenceScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
-      viewModelBuilder: () => GenderViewModel(),
+      viewModelBuilder: () => NutritionPreferenceViewmodel(),
       builder: (context, viewModel, _) {
+        final List<String> nutritionPreference = [
+          'Vegan',
+          'Vegeterian',
+          'Gluten-Free',
+          'Dairy Free',
+          'Pescetarian',
+          'None',
+        ];
         return Scaffold(
           appBar: CustomAppBar(arrowColor: AppColors.white),
           body: Stack(
@@ -31,18 +39,18 @@ class GenderScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     const CustomCarouselIndicator(
-                      currentPage: 0,
+                      currentPage: 4,
                       totalPages: 5,
                     ),
                     SizedBox(height: 50.h),
                     Row(
                       children: [
                         CustomText(
-                          text: 'Gender',
+                          text: 'Health Preference',
                           fontSize: 28.sp,
                         ),
                         Image.asset(
-                          Assets.genderLogo,
+                          Assets.nutritionPreferenceLogo,
                           width: 24.w,
                           height: 24.h,
                         ),
@@ -51,28 +59,26 @@ class GenderScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 30.h),
                     Column(
-                      children: [
-                        CustomGestureButton(
-                          isSelected: viewModel.selectedGender == 0,
-                          buttonTitle: 'Male',
-                          onTap: () {
-                            viewModel.selectGender(0);
-                          },
+                      children: List.generate(
+                        nutritionPreference.length,
+                        (index) => Column(
+                          children: [
+                            CustomGestureButton(
+                              isSelected: viewModel.selectedHealthGoal.contains(index),
+                              buttonTitle: nutritionPreference[index],
+                              onTap: () {
+                                viewModel.toggleNutritionPreference(index);
+                              },
+                            ),
+                            SizedBox(height: 10.h),
+                          ],
                         ),
-                        SizedBox(height: 10.h),
-                        CustomGestureButton(
-                          isSelected: viewModel.selectedGender == 1,
-                          buttonTitle: 'Female',
-                          onTap: () {
-                            viewModel.selectGender(1);
-                          },
-                        ),
-                      ],
+                      ),
                     ),
                     SizedBox(height: 30.h),
                     CustomButton(
                       onPressed: () {
-                        navigationService.pushNamed("/age");
+                        navigationService.pushNamed("/log-in");
                       },
                       text: 'Next',
                       textColor: AppColors.white,
