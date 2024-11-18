@@ -54,11 +54,12 @@ class PincodeScreen extends StatelessWidget {
                       ],
                       pinTheme: PinTheme(
                         shape: PinCodeFieldShape.box,
-                        fieldHeight: 50.sp,
+                        fieldHeight: 60.sp,
                         fieldWidth: 50.sp,
                         inactiveColor: AppColors.white,
                         selectedColor: AppColors.white,
                         activeColor: AppColors.white,
+                        inactiveFillColor: AppColors.white,
                         activeFillColor: AppColors.white,
                         selectedFillColor: AppColors.white,
                         borderWidth: 5.sp,

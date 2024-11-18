@@ -55,20 +55,20 @@ class CarouselScreen extends StatelessWidget {
                         },
                         children: const [
                           CarouselItemScreen(
-                              title: "Customized \nNutrition Programs",
-                              description: "Enjoy meal plans and dietary advice personalized to your needs and \npreferences.",
+                              title: "Customized Nutrition Programs",
+                              description: "Enjoy meal plans and dietary advice personalized to your needs and preferences.",
                               highlightWord: "Nutrition"),
                           CarouselItemScreen(
-                              title: "Health Monitoring \nTools",
-                              description: "Track your progress with heart rate, sleep, and activity monitoring for \noptimal results.",
+                              title: "Health Monitoring Tools",
+                              description: "Track your progress with heart rate, sleep, and activity monitoring for optimal results.",
                               highlightWord: "Monitoring"),
                           CarouselItemScreen(
-                              title: "Expert\n Consultations",
-                              description: "Access certified trainers, dietitians, and healthcare pros for personalized \nguidance and support.",
+                              title: "Expert Consultations",
+                              description: "Access certified trainers, dietitians, and healthcare pros for personalized guidance and support.",
                               highlightWord: "Expert"),
                           CarouselItemScreen(
-                              title: "Market \nPlace",
-                              description: "Access certified trainers, dietitians, and healthcare pros for personalized \nguidance and support.",
+                              title: "Market Place",
+                              description: "Access certified trainers, dietitians, and healthcare pros for personalized guidance and support.",
                               highlightWord: "Market"),
                         ],
                       ),

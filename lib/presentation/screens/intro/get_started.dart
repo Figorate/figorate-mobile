@@ -29,11 +29,14 @@ class GetStartedScreen extends StatelessWidget {
               fontSize: 28.sp,
             ),
             SizedBox(height: 40.h),
-            CustomText(
-              text: 'To create a personalized nutrition and training plan for You, built by Our team \nof experts in medical and fitness',
-              color: AppColors.white,
-              fontSize: 16.sp,
-              textAlign: TextAlign.left,
+            Padding(
+              padding: EdgeInsets.all(10.spMax),
+              child: CustomText(
+                text: 'To create a personalized nutrition and training plan for You, built by Our team \nof experts in medical and fitness',
+                color: AppColors.white,
+                fontSize: 16.sp,
+                textAlign: TextAlign.left,
+              ),
             ),
             SizedBox(height: 100.h),
             Center(

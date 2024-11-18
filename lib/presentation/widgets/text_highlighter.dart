@@ -40,7 +40,6 @@ class CustomHighlightedText extends StatelessWidget {
                     style: GoogleFonts.poppins(
                       fontSize: fontSize.sp,
                       color: highlightColor ?? AppColors.green,
-                      decoration: TextDecoration.underline,
                     ),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {

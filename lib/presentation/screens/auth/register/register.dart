@@ -82,7 +82,8 @@ class RegisterationScreen extends StatelessWidget {
                   child: CustomHighlightedText(
                     text: "Sign up Manually",
                     highlightWord: "Manually",
-                    fontSize: 18.sp,
+                    fontSize: 17.sp,
+                    isHighlightClickable: true,
                     highlightColor: AppColors.blue,
                     onHighlightTap: () {
                       navigationService.pushNamed("/sign-up-manually");
