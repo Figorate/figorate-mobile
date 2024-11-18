@@ -70,7 +70,7 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(height: 30.h),
                     CustomButton(
                       onPressed: () {
-                        navigationService.pushNamed("");
+                        navigationService.pushNamed("/pincode");
                       },
                       text: 'Login',
                       textColor: AppColors.white,

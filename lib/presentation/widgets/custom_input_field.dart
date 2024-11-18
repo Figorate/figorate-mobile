@@ -38,7 +38,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
     return TextFormField(
       decoration: InputDecoration(
         labelText: widget.labelText,
-        labelStyle: TextStyle(color: widget.labelColor ?? AppColors.grey),
+        labelStyle: TextStyle(color: widget.labelColor ?? AppColors.black),
         errorText: widget.errorText,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.r),
