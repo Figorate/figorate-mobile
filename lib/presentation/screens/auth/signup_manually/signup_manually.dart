@@ -78,7 +78,33 @@ class SignupManuallyScreen extends StatelessWidget {
                         errorText: viewModel.passwordError,
                         onChanged: viewModel.onPasswordChanged,
                       ),
-                      SizedBox(height: 180.h),
+                      Column(
+                        children: [
+                          Row(
+                            children: [
+                              Icon(
+                                viewModel.isPasswordStrong
+                                    ? Icons.check_circle
+                                    : Icons.error,
+                                color: viewModel.isPasswordStrong
+                                    ? AppColors.green
+                                    : AppColors.red,
+                              ),
+                              SizedBox(width: 8.w),
+                              Text(
+                                viewModel.passwordStrengthMessage,
+                                style: TextStyle(
+                                  color: viewModel.isPasswordStrong
+                                      ? AppColors.green
+                                      : AppColors.red,
+                                  fontSize: 14.sp,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 100.h),
                       CustomHighlightedText(
                         text:
                             "By selecting Agree and continue, I agree to Dynamic Layers Terms of Service, Payments Terms of Service and Notification Policy and acknowledge the Privacy Policy.",

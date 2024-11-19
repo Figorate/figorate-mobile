@@ -16,6 +16,20 @@ class SignupManuallyViewmodel extends BaseViewModel {
   String? get emailError => _emailError;
   String? get passwordError => _passwordError;
 
+  String get passwordStrengthMessage {
+    if (_password.isEmpty) return 'Enter a password';
+    if (_isPasswordStrong) return 'Strong Password';
+    return 'Weak Password';
+  }
+
+  bool get _isPasswordStrong =>
+      _password.length >= 8 &&
+      RegExp(r'[A-Z]').hasMatch(_password) &&
+      RegExp(r'[0-9]').hasMatch(_password) &&
+      RegExp(r'[^A-Za-z0-9]').hasMatch(_password); 
+
+  bool get isPasswordStrong => _isPasswordStrong;
+
   bool get isFormValid =>
       _firstName.isNotEmpty &&
       _lastName.isNotEmpty &&
@@ -75,8 +89,19 @@ class SignupManuallyViewmodel extends BaseViewModel {
     if (value.isEmpty) {
       return 'Password cannot be empty';
     }
-    if (value.length < 6) {
-      return 'Password must be at least 6 characters';
+    if (value.length < 8) {
+      return 'Password must be at least 8 characters';
+    }
+    if (value.contains(' ')) {
+      return 'Password cannot contain spaces';
+    }
+    if (_firstName.toLowerCase().contains(value.toLowerCase()) ||
+        _lastName.toLowerCase().contains(value.toLowerCase()) ||
+        _email.toLowerCase().contains(value.toLowerCase())) {
+      return 'Password cannot contain your name or email';
+    }
+    if (!RegExp(r'[0-9]').hasMatch(value) && !RegExp(r'[^A-Za-z0-9]').hasMatch(value)) {
+      return 'Password must contain at least one symbol or number';
     }
     return null;
   }

@@ -5,6 +5,7 @@ class AppColors {
   static Color black = HexColor.fromHex("#000000");
   static Color green = HexColor.fromHex('#3B8A4D');
   static Color lightGreen = HexColor.fromHex("#4EB867");
+  static Color red = HexColor.fromHex("#FF2C20");
   static Color white = HexColor.fromHex('#FFFFFF');
   static Color blue = HexColor.fromHex("#367AE1");
   static Color grey = HexColor.fromHex("#CED0D4");
