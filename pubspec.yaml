@@ -43,7 +43,7 @@ dependencies:
   stacked:
   pin_code_fields:
   google_fonts:
-
+  intl_phone_number_input:
 
 dev_dependencies:
   flutter_test:

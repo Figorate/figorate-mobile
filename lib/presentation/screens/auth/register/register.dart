@@ -32,7 +32,6 @@ class RegisterationScreen extends StatelessWidget {
                       fontSize: 26.sp,
                       textAlign: TextAlign.left,
                     ),
-                    SizedBox(width: 10.w),
                   ],
                 ),
                 SizedBox(height: 30.h),

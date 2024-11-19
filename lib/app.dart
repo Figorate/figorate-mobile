@@ -10,6 +10,7 @@ import 'package:figorate_mobile/presentation/screens/auth/nutrition_preference/n
 import 'package:figorate_mobile/presentation/screens/auth/register/register.dart';
 import 'package:figorate_mobile/presentation/screens/auth/reset_password/reset_password.dart';
 import 'package:figorate_mobile/presentation/screens/auth/signup_manually/signup_manually.dart';
+import 'package:figorate_mobile/presentation/screens/auth/two_factor_authentication/two_factor_authentication.dart';
 import 'package:figorate_mobile/presentation/screens/splash/splash_screen.dart';
 import 'package:figorate_mobile/services/locator/service_locator.dart';
 import 'package:flutter/material.dart';
@@ -55,6 +56,7 @@ class _MyAppState extends State<MyApp> {
                 "/registeration" : (context) => const RegisterationScreen(),
                 "/sign-up-manually" : (context) => const SignupManuallyScreen(),
                 "/reset-password" : (context) => const ResetPasswordScreen(),
+                "/two-factor-authentication": (context) => const TwoFactorAuthenticationScreen(),
               },
             ),
           );

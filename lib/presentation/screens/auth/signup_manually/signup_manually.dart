@@ -130,7 +130,7 @@ class SignupManuallyScreen extends StatelessWidget {
                           },
                         },
                       ),
-                      SizedBox(height: 100.h),
+                      SizedBox(height: 50.h),
                       CustomButton(
                         onPressed: viewModel.isFormValid
                             ? () {

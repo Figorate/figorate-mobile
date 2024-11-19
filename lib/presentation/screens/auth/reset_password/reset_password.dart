@@ -55,7 +55,7 @@ class ResetPasswordScreen extends StatelessWidget {
                     SizedBox(height: 20.h),
                     CustomButton(
                       onPressed: () {
-                        navigationService.pushNamed("");
+                        navigationService.pushNamed("/two-factor-authentication");
                       },
                       text: 'Reset Password',
                       textColor: AppColors.white,
