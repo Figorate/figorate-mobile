@@ -8,6 +8,7 @@ import 'package:figorate_mobile/presentation/screens/auth/health_goal/health_goa
 import 'package:figorate_mobile/presentation/screens/auth/medical_condition/medical_condition.dart';
 import 'package:figorate_mobile/presentation/screens/auth/nutrition_preference/nutrition_preference.dart';
 import 'package:figorate_mobile/presentation/screens/auth/register/register.dart';
+import 'package:figorate_mobile/presentation/screens/auth/reset_password/reset_password.dart';
 import 'package:figorate_mobile/presentation/screens/auth/signup_manually/signup_manually.dart';
 import 'package:figorate_mobile/presentation/screens/splash/splash_screen.dart';
 import 'package:figorate_mobile/services/locator/service_locator.dart';
@@ -53,6 +54,7 @@ class _MyAppState extends State<MyApp> {
                 "/pincode" : (context) => const PincodeScreen(),
                 "/registeration" : (context) => const RegisterationScreen(),
                 "/sign-up-manually" : (context) => const SignupManuallyScreen(),
+                "/reset-password" : (context) => const ResetPasswordScreen(),
               },
             ),
           );

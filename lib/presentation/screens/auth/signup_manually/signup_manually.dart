@@ -5,7 +5,7 @@ import 'package:figorate_mobile/presentation/widgets/custom_button.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_text.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_input_field.dart'; // Assuming this exists
 import 'package:figorate_mobile/core/theme/app_colors.dart';
-import 'package:figorate_mobile/presentation/widgets/text_highlighter.dart';
+import 'package:figorate_mobile/presentation/widgets/custom_text_highlighter.dart';
 import 'package:figorate_mobile/services/locator/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -91,15 +91,14 @@ class SignupManuallyScreen extends StatelessWidget {
                                     : AppColors.red,
                               ),
                               SizedBox(width: 8.w),
-                              Text(
-                                viewModel.passwordStrengthMessage,
-                                style: TextStyle(
-                                  color: viewModel.isPasswordStrong
+                              CustomText(
+                                text: viewModel.passwordStrengthMessage,
+                                color: viewModel.isPasswordStrong
                                       ? AppColors.green
                                       : AppColors.red,
-                                  fontSize: 14.sp,
+                                  fontSize: 11.sp,
                                 ),
-                              ),
+                              
                             ],
                           ),
                         ],
@@ -134,7 +133,7 @@ class SignupManuallyScreen extends StatelessWidget {
                       CustomButton(
                         onPressed: viewModel.isFormValid
                             ? () {
-                                navigationService.pushNamed("");
+                                navigationService.pushNamed("/reset-password");
                               }
                             : null,
                         text: 'Agree and Continue',
