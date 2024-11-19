@@ -22,7 +22,7 @@ class GetStartedScreen extends StatelessWidget {
             SizedBox(height: 80.h),
             CustomHighlightedText(
               text: "Get Started To\n Personalize \n Your Experience",
-              highlightWord: "Personalize",
+              highlightWords: "Personalize",
               highlightColor: AppColors.lightGreen,
               defaultColor: AppColors.white,
               textAlign: TextAlign.left,

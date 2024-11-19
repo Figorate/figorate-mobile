@@ -1,10 +1,11 @@
-import 'package:figorate_mobile/core/constant/assets.dart';
 import 'package:figorate_mobile/presentation/screens/auth/signup_manually/signup_manually_viewmodel.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_app_bar.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_dialog.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_button.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_text.dart';
+import 'package:figorate_mobile/presentation/widgets/custom_input_field.dart'; // Assuming this exists
 import 'package:figorate_mobile/core/theme/app_colors.dart';
+import 'package:figorate_mobile/presentation/widgets/text_highlighter.dart';
 import 'package:figorate_mobile/services/locator/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,59 +26,98 @@ class SignupManuallyScreen extends StatelessWidget {
             children: [
               CustomBottomDialog(
                 height: 650.h,
-                content: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        CustomText(
-                          text: 'Welcome Back',
-                          fontSize: 28.sp,
-                        ),
-                        Image.asset(
-                          Assets.signInLogo,
-                          width: 24.w,
-                          height: 24.h,
-                        ),
-                        SizedBox(width: 10.w),
-                      ],
-                    ),
-                    SizedBox(height: 30.h),
-                    // CustomInputField(
-                    //   labelText: 'Email',
-                    //   keyboardType: TextInputType.emailAddress,
-                    //   errorText: viewModel.emailError,
-                    //   onChanged: viewModel.onEmailChanged,
-                    // ),
-                    // SizedBox(height: 20.h),
-                    // CustomInputField(
-                    //   labelText: 'Password',
-                    //   obscureText: true,
-                    //   errorText: viewModel.passwordError,
-                    //   onChanged: viewModel.onPasswordChanged,
-                    // ),
-                    SizedBox(height: 30.h),
-                    Center(
-                      child: CustomText(
-                          text: "Forget Password?",
-                          fontWeight: FontWeight.w700,
-                          onTap: () {
-                            navigationService.pushNamed("");
-                          }),
-                    ),
-                    SizedBox(height: 30.h),
-                    CustomButton(
-                      onPressed: () {
-                        navigationService.pushNamed("/pincode");
-                      },
-                      text: 'Login',
-                      textColor: AppColors.white,
-                      // isEnabled: viewModel.isFormValid,
-                      height: 45.h,
-                      width: 500.w,
-                    ),
-                  ],
+                content: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          CustomText(
+                            text: 'Sign up Manually',
+                            fontSize: 26.sp,
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 30.h),
+                      CustomInputField(
+                        labelText: 'First Name',
+                        keyboardType: TextInputType.name,
+                        errorText: viewModel.firstNameError,
+                        onChanged: viewModel.onFirstNameChanged,
+                      ),
+                      SizedBox(height: 10.h),
+                      CustomInputField(
+                        labelText: 'Last Name',
+                        keyboardType: TextInputType.name,
+                        errorText: viewModel.lastNameError,
+                        onChanged: viewModel.onLastNameChanged,
+                      ),
+                      CustomText(
+                        text:
+                            "Make sure it matches the name on your government ID.",
+                        color: AppColors.grey,
+                        textAlign: TextAlign.left,
+                      ),
+                      SizedBox(height: 10.h),
+                      CustomInputField(
+                        labelText: 'Email',
+                        keyboardType: TextInputType.emailAddress,
+                        errorText: viewModel.emailError,
+                        onChanged: viewModel.onEmailChanged,
+                      ),
+                      CustomText(
+                        text: "We will email you sign up confirmations.",
+                        color: AppColors.grey,
+                        textAlign: TextAlign.left,
+                      ),
+                      SizedBox(height: 10.h),
+                      CustomInputField(
+                        labelText: 'Password',
+                        obscureText: true,
+                        errorText: viewModel.passwordError,
+                        onChanged: viewModel.onPasswordChanged,
+                      ),
+                      SizedBox(height: 180.h),
+                      CustomHighlightedText(
+                        text:
+                            "By selecting Agree and continue, I agree to Dynamic Layers Terms of Service, Payments Terms of Service and Notification Policy and acknowledge the Privacy Policy.",
+                        highlightWords:
+                            "Terms of Service, Payments Terms of Service, Notification Policy, Privacy Policy",
+                        fontSize: 11.sp,
+                        textAlign: TextAlign.left,
+                        highlightColor: AppColors.blue,
+                        isHighlightClickable: true,
+                        onHighlightTapMap: {
+                          "Terms of Service": () {
+                            print("You have clicked me");
+                            navigationService.pushNamed("/terms-of-service");
+                          },
+                          "Payments Terms of Service": () {
+                            navigationService
+                                .pushNamed("/payments-terms-of-service");
+                          },
+                          "Notification Policy": () {
+                            navigationService.pushNamed("/notification-policy");
+                          },
+                          "Privacy Policy": () {
+                            navigationService.pushNamed("/privacy-policy");
+                          },
+                        },
+                      ),
+                      CustomButton(
+                        onPressed: viewModel.isFormValid
+                            ? () {
+                                navigationService.pushNamed("");
+                              }
+                            : null,
+                        text: 'Agree and Continue',
+                        textColor: AppColors.white,
+                        height: 45.h,
+                        width: 500.w,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

@@ -27,7 +27,7 @@ class CarouselItemScreen extends StatelessWidget {
           Center(
             child: CustomHighlightedText(
               text: title,
-              highlightWord: highlightWord,
+              highlightWords: highlightWord,
               highlightColor: AppColors.green,
             ),
           ),
