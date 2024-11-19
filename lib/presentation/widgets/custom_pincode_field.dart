@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomPinCodeField extends StatelessWidget {
+class PincodeWidget extends StatelessWidget {
   final ValueChanged<String> onChanged;
   final String? errorText;
   final Color fieldColor;
   final Color borderColor;
   final Color focusedBorderColor;
 
-  const CustomPinCodeField({
+  const PincodeWidget
+({
     super.key,
     required this.onChanged,
     this.errorText,
@@ -40,7 +41,7 @@ class CustomPinCodeField extends StatelessWidget {
             style: TextStyle(color: fieldColor),
             decoration: InputDecoration(
               counterText: '',
-              errorText: index == 5 ? errorText : null, // Show error only on the last field
+              errorText: index == 5 ? errorText : null,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.r),
                 borderSide: BorderSide(color: borderColor),
@@ -53,18 +54,13 @@ class CustomPinCodeField extends StatelessWidget {
             onChanged: (value) {
               onChanged(value);
               if (value.isNotEmpty && index < 5) {
-                // Move focus to the next field if a digit is entered
                 FocusScope.of(context).requestFocus(focusNodes[index + 1]);
               } else if (value.isEmpty && index > 0) {
-                // Move focus to the previous field if the value is cleared
                 FocusScope.of(context).requestFocus(focusNodes[index - 1]);
               }
             },
             onEditingComplete: () {
-              if (index == 5) {
-                // Call onComplete when the last field is filled
-                // Trigger any necessary action like form submission
-              }
+              if (index == 5) {}
             },
           ),
         );

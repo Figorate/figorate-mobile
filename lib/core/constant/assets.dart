@@ -20,4 +20,6 @@ class Assets {
   static const String facebookLogo = "assets/png/facebook.png";
   static const String googleLogo = "assets/png/google.png";
   static const String appleLogo = "assets/png/apple.png";
+  static const String fingerPrintImage = "assets/png/finger_print.png";
+  static const String backgroundForFingerPrint = "assets/png/background.png";
 }

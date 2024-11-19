@@ -63,7 +63,7 @@ class TwoFactorAuthenticationScreen extends StatelessWidget {
                      SizedBox(height: 20.h),
                     CustomButton(
                       onPressed: () {
-                        navigationService.pushNamed("/two-factor-authentication");
+                        navigationService.pushNamed("/confirm-2fa");
                       },
                       text: 'Enable',
                       textColor: AppColors.white,
