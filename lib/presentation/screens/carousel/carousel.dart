@@ -34,13 +34,10 @@ class CarouselScreen extends StatelessWidget {
                 top: 80.h,
                 left: 0,
                 right: 0,
-                child: Container(
-                  color: AppColors.green,
-                  child: Image.asset(
-                    _images[viewModel.currentPage],
-                    height: 200.h,
-                    fit: BoxFit.contain,
-                  ),
+                child: Image.asset(
+                  _images[viewModel.currentPage],
+                  height: 200.h,
+                  fit: BoxFit.contain,
                 ),
               ),
               CustomBottomDialog(
