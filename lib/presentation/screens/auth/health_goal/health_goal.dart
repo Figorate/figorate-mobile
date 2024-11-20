@@ -1,5 +1,5 @@
 import 'package:figorate_mobile/core/constant/assets.dart';
-import 'package:figorate_mobile/presentation/screens/auth/register/medical_condition/medical_condition_viewModel.dart';
+import 'package:figorate_mobile/presentation/screens/auth/health_goal/health_goal_viewModel.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_app_bar.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_dialog.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_button.dart';
@@ -12,21 +12,20 @@ import 'package:figorate_mobile/core/theme/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 
-class MedicalConditionScreen extends StatelessWidget {
-  const MedicalConditionScreen({super.key});
+class HealthGoalScreen extends StatelessWidget {
+  const HealthGoalScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
-      viewModelBuilder: () => MedicalConditionViewmodel(),
+      viewModelBuilder: () => HealthGoalViewmodel(),
       builder: (context, viewModel, _) {
-        final List<String> conditions = [
-          'Cardiovascular Disease',
-          'Kidney Disease',
-          'Hypertension',
-          'Diabetes',
-          'High Cholesterol',
-          'None of the above',
+        final List<String> healthGoal = [
+          'Weight Loss',
+          'Weight Gain',
+          'Improved Fitness',
+          'Improved Nutrition',
+          'Stress Management',
         ];
         return Scaffold(
           appBar: CustomAppBar(arrowColor: AppColors.white),
@@ -39,18 +38,18 @@ class MedicalConditionScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     const CustomCarouselIndicator(
-                      currentPage: 2,
+                      currentPage: 3,
                       totalPages: 5,
                     ),
                     SizedBox(height: 50.h),
                     Row(
                       children: [
                         CustomText(
-                          text: 'Medical Condition',
+                          text: 'Health Goal',
                           fontSize: 28.sp,
                         ),
                         Image.asset(
-                          Assets.medicalConditionLogo,
+                          Assets.healthGoalLogo,
                           width: 24.w,
                           height: 24.h,
                         ),
@@ -60,14 +59,14 @@ class MedicalConditionScreen extends StatelessWidget {
                     SizedBox(height: 30.h),
                     Column(
                       children: List.generate(
-                        conditions.length,
+                        healthGoal.length,
                         (index) => Column(
                           children: [
                             CustomGestureButton(
-                              isSelected: viewModel.selectedMedicalConditions.contains(index),
-                              buttonTitle: conditions[index],
+                              isSelected: viewModel.selectedHealthGoal.contains(index),
+                              buttonTitle: healthGoal[index],
                               onTap: () {
-                                viewModel.toggleMedicalCondition(index);
+                                viewModel.toggleHealthGoal(index);
                               },
                             ),
                             SizedBox(height: 10.h),
@@ -78,7 +77,7 @@ class MedicalConditionScreen extends StatelessWidget {
                     SizedBox(height: 30.h),
                     CustomButton(
                       onPressed: () {
-                        navigationService.pushNamed("/health-goal");
+                        navigationService.pushNamed("/nutrition-preference");
                       },
                       text: 'Next',
                       textColor: AppColors.white,

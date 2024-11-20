@@ -1,5 +1,5 @@
 import 'package:figorate_mobile/core/constant/assets.dart';
-import 'package:figorate_mobile/presentation/screens/auth/register/nutrition_preference/nutrition_preference_viewModel.dart';
+import 'package:figorate_mobile/presentation/screens/auth/medical_condition/medical_condition_viewModel.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_app_bar.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_dialog.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_button.dart';
@@ -12,21 +12,21 @@ import 'package:figorate_mobile/core/theme/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 
-class NutritionPreferenceScreen extends StatelessWidget {
-  const NutritionPreferenceScreen({super.key});
+class MedicalConditionScreen extends StatelessWidget {
+  const MedicalConditionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
-      viewModelBuilder: () => NutritionPreferenceViewmodel(),
+      viewModelBuilder: () => MedicalConditionViewmodel(),
       builder: (context, viewModel, _) {
-        final List<String> nutritionPreference = [
-          'Vegan',
-          'Vegeterian',
-          'Gluten-Free',
-          'Dairy Free',
-          'Pescetarian',
-          'None',
+        final List<String> conditions = [
+          'Cardiovascular Disease',
+          'Kidney Disease',
+          'Hypertension',
+          'Diabetes',
+          'High Cholesterol',
+          'None of the above',
         ];
         return Scaffold(
           appBar: CustomAppBar(arrowColor: AppColors.white),
@@ -39,18 +39,18 @@ class NutritionPreferenceScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     const CustomCarouselIndicator(
-                      currentPage: 4,
+                      currentPage: 2,
                       totalPages: 5,
                     ),
                     SizedBox(height: 50.h),
                     Row(
                       children: [
                         CustomText(
-                          text: 'Health Preference',
+                          text: 'Medical Condition',
                           fontSize: 28.sp,
                         ),
                         Image.asset(
-                          Assets.nutritionPreferenceLogo,
+                          Assets.medicalConditionLogo,
                           width: 24.w,
                           height: 24.h,
                         ),
@@ -60,14 +60,14 @@ class NutritionPreferenceScreen extends StatelessWidget {
                     SizedBox(height: 30.h),
                     Column(
                       children: List.generate(
-                        nutritionPreference.length,
+                        conditions.length,
                         (index) => Column(
                           children: [
                             CustomGestureButton(
-                              isSelected: viewModel.selectedHealthGoal.contains(index),
-                              buttonTitle: nutritionPreference[index],
+                              isSelected: viewModel.selectedMedicalConditions.contains(index),
+                              buttonTitle: conditions[index],
                               onTap: () {
-                                viewModel.toggleNutritionPreference(index);
+                                viewModel.toggleMedicalCondition(index);
                               },
                             ),
                             SizedBox(height: 10.h),
@@ -78,7 +78,7 @@ class NutritionPreferenceScreen extends StatelessWidget {
                     SizedBox(height: 30.h),
                     CustomButton(
                       onPressed: () {
-                        navigationService.pushNamed("/log-in");
+                        navigationService.pushNamed("/health-goal");
                       },
                       text: 'Next',
                       textColor: AppColors.white,

@@ -1,6 +1,6 @@
 import 'package:figorate_mobile/presentation/widgets/custom_button.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_text.dart';
-import 'package:figorate_mobile/presentation/widgets/text_highlighter.dart';
+import 'package:figorate_mobile/presentation/widgets/custom_text_highlighter.dart';
 import 'package:figorate_mobile/services/locator/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:figorate_mobile/core/theme/app_colors.dart';
@@ -22,18 +22,21 @@ class GetStartedScreen extends StatelessWidget {
             SizedBox(height: 80.h),
             CustomHighlightedText(
               text: "Get Started To\n Personalize \n Your Experience",
-              highlightWord: "Personalize",
+              highlightWords: "Personalize",
               highlightColor: AppColors.lightGreen,
               defaultColor: AppColors.white,
               textAlign: TextAlign.left,
               fontSize: 28.sp,
             ),
             SizedBox(height: 40.h),
-            CustomText(
-              text: 'To create a personalized nutrition and training plan for You, built by Our team \nof experts in medical and fitness',
-              color: AppColors.white,
-              fontSize: 16.sp,
-              textAlign: TextAlign.left,
+            Padding(
+              padding: EdgeInsets.all(10.spMax),
+              child: CustomText(
+                text: 'To create a personalized nutrition and training plan for You, built by Our team \nof experts in medical and fitness',
+                color: AppColors.white,
+                fontSize: 16.sp,
+                textAlign: TextAlign.left,
+              ),
             ),
             SizedBox(height: 100.h),
             Center(

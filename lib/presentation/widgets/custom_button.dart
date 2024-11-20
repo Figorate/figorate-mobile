@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
-  final VoidCallback onPressed;
+  final void Function()? onPressed;
   final double? width;
   final double? height;
   final double? fontSize;
@@ -14,6 +14,8 @@ class CustomButton extends StatelessWidget {
   final Color? textColor;
   final double? borderRadius;
   final bool isEnabled;
+  final String? imagePath;
+  final Color? borderColor;
 
   const CustomButton({
     super.key,
@@ -27,6 +29,8 @@ class CustomButton extends StatelessWidget {
     this.textColor,
     this.borderRadius,
     this.isEnabled = true,
+    this.imagePath,
+    this.borderColor,
   });
 
   @override
@@ -42,13 +46,31 @@ class CustomButton extends StatelessWidget {
               : AppColors.grey,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius ?? 7.r),
+            side: BorderSide(
+              color: borderColor ?? Colors.transparent,
+              width: 1.5,
+            ),
           ),
         ),
-        child: CustomText(
-          text: text,
-          fontWeight: fontWeight,
-          color: isEnabled ? (textColor ?? AppColors.white) : AppColors.darkGrey,
-          fontSize: fontSize ?? 16.sp,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (imagePath != null)
+              Padding(
+                padding: EdgeInsets.only(right: 10.w),
+                child: Image.asset(
+                  imagePath!,
+                  width: 24.w,
+                  height: 24.h,
+                ),
+              ),
+            CustomText(
+              text: text,
+              fontWeight: fontWeight,
+              color: isEnabled ? (textColor ?? AppColors.white) : AppColors.darkGrey,
+              fontSize: fontSize ?? 16.sp,
+            ),
+          ],
         ),
       ),
     );
