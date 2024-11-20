@@ -19,7 +19,6 @@ class CarouselScreen extends StatelessWidget {
     Assets.secondPersonalizedIntro,
     Assets.thirdPersonalizedIntro,
     Assets.fourthPersonalizedIntro,
-    Assets.fifthPersonalizedIntro,
   ];
 
   @override
@@ -35,10 +34,13 @@ class CarouselScreen extends StatelessWidget {
                 top: 80.h,
                 left: 0,
                 right: 0,
-                child: Image.asset(
-                  _images[viewModel.currentPage],
-                  height: 200.h,
-                  fit: BoxFit.contain,
+                child: Container(
+                  color: AppColors.green,
+                  child: Image.asset(
+                    _images[viewModel.currentPage],
+                    height: 200.h,
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
               CustomBottomDialog(
@@ -81,7 +83,7 @@ class CarouselScreen extends StatelessWidget {
                     SizedBox(height: 30.h),
                   CustomButton(
                     onPressed: () {
-                      if (viewModel.currentPage < 4) {
+                      if (viewModel.currentPage < 3) {
                         viewModel.goToNextSlide();
                       } else {
                         navigationService.pushAndRemoveUntil(

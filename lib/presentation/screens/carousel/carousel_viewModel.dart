@@ -8,7 +8,7 @@ class CarouselViewModel extends BaseViewModel {
   CarouselViewModel();
 
   void goToNextSlide() {
-    if (currentPage < 4) {
+    if (currentPage < 3) {
       currentPage++;
     } else {
       currentPage = 0;
