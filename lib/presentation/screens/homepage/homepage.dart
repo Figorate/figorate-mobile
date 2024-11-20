@@ -10,8 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 
-class EnableFingerPrintScreen extends StatelessWidget {
-  const EnableFingerPrintScreen({super.key});
+class HomePageScreen extends StatelessWidget {
+  const HomePageScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +72,7 @@ class EnableFingerPrintScreen extends StatelessWidget {
                     SizedBox(height: 30.h),
                     CustomButton(
                       onPressed: () {
-                        navigationService.pushNamed("/homepage");
+                        navigationService.pushNamed("");
                       },
                       text: 'Confirm',
                       textColor: AppColors.green,

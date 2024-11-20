@@ -13,6 +13,7 @@ import 'package:figorate_mobile/presentation/screens/auth/reset_password/reset_p
 import 'package:figorate_mobile/presentation/screens/auth/signup_manually/signup_manually.dart';
 import 'package:figorate_mobile/presentation/screens/auth/two_factor_authentication/finger_print/enable_finger_print.dart';
 import 'package:figorate_mobile/presentation/screens/auth/two_factor_authentication/two_factor_authentication.dart';
+import 'package:figorate_mobile/presentation/screens/homepage/homepage.dart';
 import 'package:figorate_mobile/presentation/screens/splash/splash_screen.dart';
 import 'package:figorate_mobile/services/locator/service_locator.dart';
 import 'package:flutter/material.dart';
@@ -62,6 +63,7 @@ class _MyAppState extends State<MyApp> {
                     const TwoFactorAuthenticationScreen(),
                 "/confirm-2fa": (context) => const Confirm2FAEmailScreen(),
                 "/enable-finger-print": (context) => const EnableFingerPrintScreen(),
+                "/homepage": (context) => const HomePageScreen(),
               },
             ),
           );
