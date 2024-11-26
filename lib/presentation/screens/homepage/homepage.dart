@@ -1,92 +1,110 @@
 import 'package:figorate_mobile/core/constant/assets.dart';
-import 'package:figorate_mobile/presentation/screens/auth/pincode/pincode_viewmodel.dart';
-import 'package:figorate_mobile/presentation/widgets/custom_app_bar.dart';
-import 'package:figorate_mobile/presentation/widgets/custom_button.dart';
-import 'package:figorate_mobile/presentation/widgets/custom_dialog.dart';
 import 'package:figorate_mobile/core/theme/app_colors.dart';
+import 'package:figorate_mobile/presentation/widgets/custom_input_field.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_text.dart';
-import 'package:figorate_mobile/services/locator/service_locator.dart';
+import 'package:figorate_mobile/presentation/widgets/custon_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:stacked/stacked.dart';
 
 class HomePageScreen extends StatelessWidget {
   const HomePageScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<PincodeViewModel>.reactive(
-      viewModelBuilder: () => PincodeViewModel(),
-      builder: (context, viewModel, _) {
-        return Scaffold(
-          appBar: CustomAppBar(arrowColor: AppColors.white),
-          body: Stack(
-            alignment: Alignment.bottomCenter,
+    return Scaffold(
+      backgroundColor: AppColors.white,
+      body: Stack(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomBottomDialog(
-                height: 650.h,
-                backgroundColor: AppColors.green,
-                content: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
+              CustomContainer(
+                height: 180.h,
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: [
-                            CustomText(
-                              text: 'Enable 2FA',
-                              color: AppColors.white,
-                              textAlign: TextAlign.left,
-                              fontSize: 26.sp,
+                            CircleAvatar(
+                              radius: 20.r,
+                              backgroundImage: const AssetImage(Assets.ageLogo),
+                            ),
+                            SizedBox(width: 10.w),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                CustomText(
+                                  text: 'Welcome',
+                                  color: AppColors.white,
+                                  fontSize: 16.sp,
+                                ),
+                                CustomText(
+                                  text: "Ademola Lookman",
+                                  color: AppColors.white.withOpacity(0.7),
+                                  fontSize: 12.sp,
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                        CustomText(
-                          text: 'Enable Finger print login.',
-                          color: AppColors.white,
-                          textAlign: TextAlign.left,
-                          fontSize: 26.sp,
+                        Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {},
+                              child: Image.asset(
+                                Assets.location,
+                                height: 24.h,
+                                width: 24.w,
+                              ),
+                            ),
+                            SizedBox(width: 10.w),
+                            GestureDetector(
+                              onTap: () {},
+                              child: Image.asset(
+                                Assets.notification,
+                                height: 24.h,
+                                width: 24.w,
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                    SizedBox(height: 30.h),
-                    Center(
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Image.asset(
-                            Assets.backgroundForFingerPrint,
-                            height: 200.h,
-                            width: 200.w,
-                            fit: BoxFit.cover,
-                          ),
-                          Image.asset(
-                            Assets.fingerPrintImage,
-                            height: 200.h,
-                            width: 200.w,
-                          ),
-                        ],
+                    SizedBox(height: 20.h),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 50.w),
+                        child: CustomText(
+                          text: "'This is a quote'",
+                          color: AppColors.white.withOpacity(0.7),
+                          fontSize: 14.sp,
+                        ),
                       ),
                     ),
-                    SizedBox(height: 30.h),
-                    CustomButton(
-                      onPressed: () {
-                        navigationService.pushNamed("");
-                      },
-                      text: 'Confirm',
-                      textColor: AppColors.green,
-                      backgroundColor: AppColors.white,
-                      height: 45.h,
-                      width: 500.w,
+                    SizedBox(height: 20.h),
+                    CustomInputField(
+                      borderColor: AppColors.white,
+                      height: 35.h,
+                      textColor: AppColors.white,
+                      prefixIcon: Image.asset(
+                        Assets.seach,
+                        height: 20.h,
+                        width: 20.w,
+                      ),
+                      hintText: "Search Figorate",
+                      borderRadius: 12.r,
                     ),
                   ],
                 ),
               ),
             ],
           ),
-        );
-      },
+        ],
+      ),
     );
   }
 }

@@ -22,4 +22,8 @@ class Assets {
   static const String appleLogo = "assets/png/apple.png";
   static const String fingerPrintImage = "assets/png/finger_print.png";
   static const String backgroundForFingerPrint = "assets/png/background.png";
+  static const String suyaSauce = "assets/jpg/suya-sauce.jpg";
+  static const String notification = "assets/png/notification.png";
+  static const String location = "assets/png/location.png";
+  static const String seach = "assets/png/search.png";
 }

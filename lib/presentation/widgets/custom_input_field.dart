@@ -3,21 +3,35 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomInputField extends StatefulWidget {
-  final String labelText;
+  final String? labelText;
+  final String? hintText;
   final bool obscureText;
   final TextInputType keyboardType;
   final String? errorText;
-  final ValueChanged<String> onChanged;
+  final ValueChanged<String>? onChanged;
   final Color? labelColor;
+  final Color? hintColor;
+  final Color? borderColor;
+  final Color? textColor; 
+  final double? borderRadius;
+  final double? height;
+  final Widget? prefixIcon;
 
   const CustomInputField({
     super.key,
-    required this.labelText,
+    this.labelText,
+    this.hintText,
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
     this.errorText,
-    required this.onChanged,
+    this.onChanged,
     this.labelColor,
+    this.hintColor,
+    this.borderColor,
+    this.textColor,
+    this.borderRadius = 8,
+    this.height,
+    this.prefixIcon,
   });
 
   @override
@@ -35,29 +49,34 @@ class _CustomInputFieldState extends State<CustomInputField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: InputDecoration(
-        labelText: widget.labelText,
-        labelStyle: TextStyle(color: widget.labelColor ?? AppColors.black),
-        errorText: widget.errorText,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
+    return SizedBox(
+      height: widget.height,
+      child: TextFormField(
+        decoration: InputDecoration(
+          labelText: widget.labelText,
+          hintText: widget.hintText,
+          hintStyle: TextStyle(color: widget.hintColor ?? AppColors.grey),
+          labelStyle: TextStyle(color: widget.labelColor ?? AppColors.black),
+          errorText: widget.errorText,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(widget.borderRadius!.r),
+            borderSide: BorderSide(color: widget.borderColor ?? AppColors.grey),
+          ),
+          prefixIcon: widget.prefixIcon,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(widget.borderRadius!.r),
+            borderSide: BorderSide(color: widget.borderColor ?? AppColors.green),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(widget.borderRadius!.r),
+            borderSide: BorderSide(color: widget.borderColor ?? AppColors.green),
+          ),
         ),
-        suffixIcon: widget.obscureText ? IconButton(
-                icon: Icon(
-                  _isObscure ? Icons.visibility_off : Icons.visibility,
-                ),
-                onPressed: () {
-                  setState(() {
-                    _isObscure = !_isObscure;
-                  });
-                },
-              )
-            : null,
+        style: TextStyle(color: widget.textColor ?? AppColors.black),
+        obscureText: _isObscure,
+        keyboardType: widget.keyboardType,
+        onChanged: widget.onChanged,
       ),
-      obscureText: _isObscure,
-      keyboardType: widget.keyboardType,
-      onChanged: widget.onChanged,
     );
   }
 }
