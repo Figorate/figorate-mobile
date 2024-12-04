@@ -19,6 +19,11 @@ class Assets {
   static const String signInLogo = "assets/png/welcome_back.png";
   static const String facebookLogo = "assets/png/facebook.png";
   static const String googleLogo = "assets/png/google.png";
+  static const String profileLogo = "assets/png/profile_icon.png";
+  static const String homeLogo = "assets/png/home_icon.png";
+  static const String communityLogo = "assets/png/community_icon.png";
+  static const String marketLogo = "assets/png/market_icon.png";
+  static const String nutritionLogo = "assets/png/nutrition_icon.png";
   static const String appleLogo = "assets/png/apple.png";
   static const String fingerPrintImage = "assets/png/finger_print.png";
   static const String backgroundForFingerPrint = "assets/png/background.png";
