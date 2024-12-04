@@ -12,9 +12,8 @@ class CustomInputField extends StatefulWidget {
   final Color? labelColor;
   final Color? hintColor;
   final Color? borderColor;
-  final Color? textColor; 
+  final Color? textColor;
   final double? borderRadius;
-  final double? height;
   final Widget? prefixIcon;
 
   const CustomInputField({
@@ -30,7 +29,6 @@ class CustomInputField extends StatefulWidget {
     this.borderColor,
     this.textColor,
     this.borderRadius = 8,
-    this.height,
     this.prefixIcon,
   });
 
@@ -50,7 +48,6 @@ class _CustomInputFieldState extends State<CustomInputField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: widget.height,
       child: TextFormField(
         decoration: InputDecoration(
           labelText: widget.labelText,

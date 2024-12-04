@@ -25,5 +25,14 @@ class Assets {
   static const String suyaSauce = "assets/jpg/suya-sauce.jpg";
   static const String notification = "assets/png/notification.png";
   static const String location = "assets/png/location.png";
-  static const String seach = "assets/png/search.png";
+  static const String search = "assets/png/search.png";
+  static const String firstBlogImage = "assets/jpg/blog_1.jpg";
+  static const String fakeFirstBlogImage = "assets/jpg/fake_blog_1.jpg";
+  static const String secondBlogImage = "assets/jpg/blog_2.jpg";
+  static const String thirdBlogImage = "assets/jpg/blog_3.jpg";
+  static const String fourthBlogImage = "assets/jpg/blog_4.jpg";
+  static const String firstOtherProgramImage = "assets/jpg/other_programs_1.jpg";
+  static const String secondOtherProgramImage =
+      "assets/jpg/other_program_2.jpg";
+  static const String firstTrendingProgramImage = "assets/jpg/trending_1.jpg";
 }
