@@ -54,14 +54,12 @@ class CustomButton extends StatelessWidget {
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(right: 10.w),
-                    child: Image.asset(
-                      imagePath!,
-                      width: 24.w,
-                      height: 24.h,
-                    ),
+                  Image.asset(
+                    imagePath!,
+                    width: 24.w,
+                    height: 24.h,
                   ),
+                  SizedBox(width: 8.w),
                   CustomText(
                     text: text,
                     fontWeight: fontWeight,
@@ -70,15 +68,13 @@ class CustomButton extends StatelessWidget {
                   ),
                 ],
               )
-            : Center(
-                child: CustomText(
-                  text: text,
-                  textAlign: TextAlign.center,
-                  fontWeight: fontWeight,
-                  color: isEnabled ? (textColor ?? AppColors.white) : AppColors.darkGrey,
-                  fontSize: fontSize ?? 16.sp,
-                ),
-              ),
+            : CustomText(
+              text: text,
+              textAlign: TextAlign.center,
+              fontWeight: fontWeight,
+              color: isEnabled ? (textColor ?? AppColors.white) : AppColors.darkGrey,
+              fontSize: fontSize ?? 16.sp,
+            ),
       ),
     );
   }

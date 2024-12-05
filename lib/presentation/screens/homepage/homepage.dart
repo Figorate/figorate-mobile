@@ -16,8 +16,7 @@ class HomePageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Map<String, String>> blogItems = AppList.blogItems;
     final List<Map<String, String>> otherProgramsItem = AppList.otherProgramItem;
-    final List<Map<String, String>> trendingProgram =
-        AppList.trendingProgramsItem;
+    final List<Map<String, String>> trendingProgram = AppList.trendingProgramsItem;
 
     return Scaffold(
       backgroundColor: AppColors.white,
@@ -119,6 +118,8 @@ class HomePageScreen extends StatelessWidget {
                         CustomText(
                           text: "Recommendation",
                           fontSize: 18.sp,
+                          isCenterAligned: false,
+                          columnAlignment: CrossAxisAlignment.start,
                           color: AppColors.black,
                         ),
                         SizedBox(height: 5.h),
@@ -146,6 +147,8 @@ class HomePageScreen extends StatelessWidget {
                             const CustomText(
                               text: "Customized Nutrition Plans",
                               fontWeight: FontWeight.w500,
+                              isCenterAligned: false,
+                              columnAlignment: CrossAxisAlignment.start,
                             ),
                             CustomText(
                               text:

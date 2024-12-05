@@ -32,15 +32,13 @@ class EnableFingerPrintScreen extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        Row(
-                          children: [
-                            CustomText(
-                              text: 'Enable 2FA',
-                              color: AppColors.white,
-                              textAlign: TextAlign.left,
-                              fontSize: 26.sp,
-                            ),
-                          ],
+                        CustomText(
+                          text: 'Enable 2FA',
+                          color: AppColors.white,
+                          textAlign: TextAlign.left,
+                          isCenterAligned: false,
+                          columnAlignment: CrossAxisAlignment.start,
+                          fontSize: 26.sp,
                         ),
                         CustomText(
                           text: 'Enable Finger print login.',
