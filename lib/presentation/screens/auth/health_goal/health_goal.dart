@@ -1,3 +1,4 @@
+import 'package:figorate_mobile/core/constant/app_list.dart';
 import 'package:figorate_mobile/core/constant/assets.dart';
 import 'package:figorate_mobile/presentation/screens/auth/health_goal/health_goal_viewModel.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_app_bar.dart';
@@ -17,75 +18,71 @@ class HealthGoalScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<String> healthGoal = AppList.healthGoal;
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => HealthGoalViewmodel(),
       builder: (context, viewModel, _) {
-        final List<String> healthGoal = [
-          'Weight Loss',
-          'Weight Gain',
-          'Improved Fitness',
-          'Improved Nutrition',
-          'Stress Management',
-        ];
         return Scaffold(
           appBar: CustomAppBar(arrowColor: AppColors.white),
-          body: Stack(
-            alignment: Alignment.bottomCenter,
-            children: [
-              CustomBottomDialog(
-                height: 650.h,
-                content: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const CustomCarouselIndicator(
-                      currentPage: 3,
-                      totalPages: 5,
-                    ),
-                    SizedBox(height: 50.h),
-                    Row(
-                      children: [
-                        CustomText(
-                          text: 'Health Goal',
-                          fontSize: 28.sp,
-                        ),
-                        Image.asset(
-                          Assets.healthGoalLogo,
-                          width: 24.w,
-                          height: 24.h,
-                        ),
-                        SizedBox(width: 10.w),
-                      ],
-                    ),
-                    SizedBox(height: 30.h),
-                    Column(
-                      children: List.generate(
-                        healthGoal.length,
-                        (index) => Column(
-                          children: [
-                            CustomGestureButton(
-                              isSelected: viewModel.selectedHealthGoal.contains(index),
-                              buttonTitle: healthGoal[index],
-                              onTap: () {
-                                viewModel.toggleHealthGoal(index);
-                              },
-                            ),
-                            SizedBox(height: 10.h),
-                          ],
+          body: SingleChildScrollView(
+            child: Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                CustomBottomDialog(
+                  height: 650.h,
+                  content: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const CustomCarouselIndicator(
+                        currentPage: 3,
+                        totalPages: 5,
+                      ),
+                      SizedBox(height: 50.h),
+                      Row(
+                        children: [
+                          CustomText(
+                            text: 'Health Goal',
+                            fontSize: 28.sp,
+                          ),
+                          Image.asset(
+                            Assets.healthGoalLogo,
+                            width: 24.w,
+                            height: 24.h,
+                          ),
+                          SizedBox(width: 10.w),
+                        ],
+                      ),
+                      SizedBox(height: 30.h),
+                      Column(
+                        children: List.generate(
+                          healthGoal.length,
+                          (index) => Column(
+                            children: [
+                              CustomGestureButton(
+                                isSelected: viewModel.selectedHealthGoal.contains(index),
+                                buttonTitle: healthGoal[index],
+                                onTap: () {
+                                  viewModel.toggleHealthGoal(index);
+                                },
+                              ),
+                              SizedBox(height: 10.h),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(height: 30.h),
-                    CustomButton(
-                      onPressed: () {
-                        navigationService.pushNamed("/nutrition-preference");
-                      },
-                      text: 'Next',
-                      textColor: AppColors.white,
-                    ),
-                  ],
+                      SizedBox(height: 30.h),
+                      CustomButton(
+                        onPressed: () {
+                          navigationService.pushNamed("/nutrition-preference");
+                        },
+                        text: 'Next',
+                        textColor: AppColors.white,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },

@@ -49,4 +49,30 @@ class AppList {
       // 'description': 'Description for blog item 2',
     },
   ];
+
+  static final List<String> medicalConditions = [
+    'Cardiovascular Disease',
+    'Kidney Disease',
+    'Hypertension',
+    'Diabetes',
+    'High Cholesterol',
+    'None of the above',
+  ];
+
+  static final List<String> nutritionPreference = [
+    'Vegan',
+    'Vegeterian',
+    'Gluten-Free',
+    'Dairy Free',
+    'Pescetarian',
+    'None',
+  ];
+
+  static final List<String> healthGoal = [
+    'Weight Loss',
+    'Weight Gain',
+    'Improved Fitness',
+    'Improved Nutrition',
+    'Stress Management',
+  ];
 }
