@@ -1,7 +1,7 @@
 import 'package:figorate_mobile/core/constant/app_list.dart';
 import 'package:figorate_mobile/core/constant/assets.dart';
 import 'package:figorate_mobile/core/theme/app_colors.dart';
-import 'package:figorate_mobile/presentation/bottom_navigation/bottom_navigation.dart';
+import 'package:figorate_mobile/presentation/widgets/bottom_navigation.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_input_field.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_text.dart';
 import 'package:figorate_mobile/presentation/widgets/custon_container.dart';
@@ -17,6 +17,7 @@ class HomePageScreen extends StatelessWidget {
     final List<Map<String, String>> blogItems = AppList.blogItems;
     final List<Map<String, String>> otherProgramsItem = AppList.otherProgramItem;
     final List<Map<String, String>> trendingProgram = AppList.trendingProgramsItem;
+    ValueNotifier<int> currentIndex = ValueNotifier<int>(0);
 
     return Scaffold(
       backgroundColor: AppColors.white,
@@ -144,9 +145,10 @@ class HomePageScreen extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const CustomText(
+                            CustomText(
                               text: "Customized Nutrition Plans",
                               fontWeight: FontWeight.w500,
+                              fontSize: 14.sp,
                               isCenterAligned: false,
                               columnAlignment: CrossAxisAlignment.start,
                             ),
@@ -155,6 +157,7 @@ class HomePageScreen extends StatelessWidget {
                                   "Well tailored nutrition plan that fits Your fitness level & health goals",
                               fontSize: 11.sp,
                               textAlign: TextAlign.left,
+                              color: AppColors.black,
                             ),
                           ],
                         ),
@@ -181,7 +184,7 @@ class HomePageScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 10.h),
+                        SizedBox(height: 5.h),
                         GridView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
@@ -236,7 +239,7 @@ class HomePageScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 10.h),
+                        SizedBox(height: 5.h),
                         GridView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
@@ -291,7 +294,7 @@ class HomePageScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 10.h),
+                        SizedBox(height: 5.h),
                         SizedBox(
                           height: 100.h,
                           child: ListView.builder(
@@ -326,7 +329,17 @@ class HomePageScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: const BottomNavigationBarWidget(),
+      bottomNavigationBar: ValueListenableBuilder<int>(
+        valueListenable: currentIndex,
+        builder: (context, index, child) {
+          return BottomNavigationBarWidget(
+            currentIndex: index,
+            onTap: (newIndex) {
+              currentIndex.value = newIndex;
+            },
+          );
+        },
+      ),    
     );
   }
 }

@@ -75,4 +75,11 @@ class AppList {
     'Improved Nutrition',
     'Stress Management',
   ];
+
+  static final List<String> carouselImages = [
+    Assets.customizeNutritionProgram,
+    Assets.healthMonitoringTool,
+    Assets.thirdPersonalizedIntro,
+    Assets.fourthPersonalizedIntro,
+  ];
 }

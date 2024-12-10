@@ -1,9 +1,7 @@
 class Assets {
   static const String figorateLogo = 'assets/png/figorate_logo.png';
-  static const String firstPersonalizedIntro =
-      'assets/jpg/first-Personalised-Intro.jpg';
-  static const String secondPersonalizedIntro =
-      'assets/jpg/second-personalized-intro.jpg';
+  static const String customizeNutritionProgram = 'assets/png/customize_nutrition.png';
+  static const String healthMonitoringTool = 'assets/png/health_monitoring_tool.png';
   static const String thirdPersonalizedIntro =
       'assets/jpg/third-personalized-intro.jpg';
   static const String fourthPersonalizedIntro =
