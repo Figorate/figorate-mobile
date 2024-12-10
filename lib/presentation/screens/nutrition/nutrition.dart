@@ -28,7 +28,7 @@ bottomNavigationBar: ValueListenableBuilder<int>(
           return BottomNavigationBarWidget(
             currentIndex: index,
             onTap: (newIndex) {
-              currentIndex.value = newIndex; // Update the current index on tap
+              currentIndex.value = newIndex;
             },
           );
         },

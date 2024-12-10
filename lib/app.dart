@@ -46,8 +46,7 @@ class _MyAppState extends State<MyApp> {
               title: 'Figorate',
               debugShowCheckedModeBanner: false,
               theme: getApplicationTheme(),
-              // home: const SplashScreen(),
-              home: const HomePageScreen(),
+              home: const SplashScreen(),
               routes: {
                 '/gender': (context) => const GenderScreen(),
                 '/age': (context) => const AgeScreen(),

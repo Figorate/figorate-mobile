@@ -61,7 +61,7 @@ class CarouselScreen extends StatelessWidget {
                               highlightWord: "Expert"),
                           CarouselItemScreen(
                               title: "Market Place",
-                              description: "Access certified trainers, dietitians, and healthcare pros for personalized guidance and support.",
+                              description: "Explore our curated marketplace for premium supplements, organic foods, and health tools designed to complement your journey.",
                               highlightWord: "Market"),
                         ],
                       ),
