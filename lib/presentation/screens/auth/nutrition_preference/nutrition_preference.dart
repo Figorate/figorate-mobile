@@ -1,3 +1,4 @@
+import 'package:figorate_mobile/core/constant/app_list.dart';
 import 'package:figorate_mobile/core/constant/assets.dart';
 import 'package:figorate_mobile/presentation/screens/auth/nutrition_preference/nutrition_preference_viewModel.dart';
 import 'package:figorate_mobile/presentation/widgets/custom_app_bar.dart';
@@ -17,76 +18,71 @@ class NutritionPreferenceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<String> nutritionPreference = AppList.nutritionPreference;
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => NutritionPreferenceViewmodel(),
       builder: (context, viewModel, _) {
-        final List<String> nutritionPreference = [
-          'Vegan',
-          'Vegeterian',
-          'Gluten-Free',
-          'Dairy Free',
-          'Pescetarian',
-          'None',
-        ];
         return Scaffold(
           appBar: CustomAppBar(arrowColor: AppColors.white),
-          body: Stack(
-            alignment: Alignment.bottomCenter,
-            children: [
-              CustomBottomDialog(
-                height: 650.h,
-                content: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const CustomCarouselIndicator(
-                      currentPage: 4,
-                      totalPages: 5,
-                    ),
-                    SizedBox(height: 50.h),
-                    Row(
-                      children: [
-                        CustomText(
-                          text: 'Health Preference',
-                          fontSize: 28.sp,
-                        ),
-                        Image.asset(
-                          Assets.nutritionPreferenceLogo,
-                          width: 24.w,
-                          height: 24.h,
-                        ),
-                        SizedBox(width: 10.w),
-                      ],
-                    ),
-                    SizedBox(height: 30.h),
-                    Column(
-                      children: List.generate(
-                        nutritionPreference.length,
-                        (index) => Column(
-                          children: [
-                            CustomGestureButton(
-                              isSelected: viewModel.selectedHealthGoal.contains(index),
-                              buttonTitle: nutritionPreference[index],
-                              onTap: () {
-                                viewModel.toggleNutritionPreference(index);
-                              },
-                            ),
-                            SizedBox(height: 10.h),
-                          ],
+          body: SingleChildScrollView(
+            child: Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                CustomBottomDialog(
+                  height: 650.h,
+                  content: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const CustomCarouselIndicator(
+                        currentPage: 4,
+                        totalPages: 5,
+                      ),
+                      SizedBox(height: 50.h),
+                      Row(
+                        children: [
+                          CustomText(
+                            text: 'Health Preference',
+                            fontSize: 28.sp,
+                          ),
+                          Image.asset(
+                            Assets.nutritionPreferenceLogo,
+                            width: 24.w,
+                            height: 24.h,
+                          ),
+                          SizedBox(width: 10.w),
+                        ],
+                      ),
+                      SizedBox(height: 30.h),
+                      Column(
+                        children: List.generate(
+                          nutritionPreference.length,
+                          (index) => Column(
+                            children: [
+                              CustomGestureButton(
+                                isSelected: viewModel.selectedHealthGoal.contains(index),
+                                buttonTitle: nutritionPreference[index],
+                                onTap: () {
+                                  viewModel.toggleNutritionPreference(index);
+                                },
+                              ),
+                              SizedBox(height: 10.h),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(height: 30.h),
-                    CustomButton(
-                      onPressed: () {
-                        navigationService.pushNamed("/log-in");
-                      },
-                      text: 'Next',
-                      textColor: AppColors.white,
-                    ),
-                  ],
+                      SizedBox(height: 30.h),
+                      CustomButton(
+                        onPressed: () {
+                          navigationService.pushNamed("/log-in");
+                        },
+                        text: 'Next',
+                        textColor: AppColors.white,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },

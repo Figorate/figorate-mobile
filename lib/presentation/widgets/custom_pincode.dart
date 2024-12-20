@@ -63,6 +63,7 @@ class CustomPincode extends StatelessWidget {
             selectedFillColor: fieldColor,
             borderWidth: 5.sp,
             borderRadius: BorderRadius.circular(7.r),
+            fieldOuterPadding: EdgeInsets.symmetric(horizontal: 0.5.sp),
           ),
           onChanged: (value) {
             onPincodeChanged(value);

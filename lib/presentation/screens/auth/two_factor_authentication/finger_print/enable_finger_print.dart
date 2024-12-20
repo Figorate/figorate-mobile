@@ -30,11 +30,23 @@ class EnableFingerPrintScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomText(
-                      text: 'Enable 2FA \nEnable Finger print login.',
-                      color: AppColors.white,
-                      textAlign: TextAlign.left,
-                      fontSize: 26.sp,
+                    Column(
+                      children: [
+                        CustomText(
+                          text: 'Enable 2FA',
+                          color: AppColors.white,
+                          textAlign: TextAlign.left,
+                          isCenterAligned: false,
+                          columnAlignment: CrossAxisAlignment.start,
+                          fontSize: 26.sp,
+                        ),
+                        CustomText(
+                          text: 'Enable Finger print login.',
+                          color: AppColors.white,
+                          textAlign: TextAlign.left,
+                          fontSize: 26.sp,
+                        ),
+                      ],
                     ),
                     SizedBox(height: 30.h),
                     Center(
@@ -58,7 +70,7 @@ class EnableFingerPrintScreen extends StatelessWidget {
                     SizedBox(height: 30.h),
                     CustomButton(
                       onPressed: () {
-                        navigationService.pushNamed("");
+                        navigationService.pushNamed("/homepage");
                       },
                       text: 'Confirm',
                       textColor: AppColors.green,

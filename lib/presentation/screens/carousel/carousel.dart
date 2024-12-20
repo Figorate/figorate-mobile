@@ -1,4 +1,4 @@
-import 'package:figorate_mobile/core/constant/assets.dart';
+import 'package:figorate_mobile/core/constant/app_list.dart';
 import 'package:figorate_mobile/core/theme/app_colors.dart';
 import 'package:figorate_mobile/presentation/screens/carousel/carousel_viewModel.dart';
 import 'package:figorate_mobile/presentation/screens/intro/get_started.dart';
@@ -12,18 +12,11 @@ import 'package:stacked/stacked.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CarouselScreen extends StatelessWidget {
-  CarouselScreen({super.key});
-
-  final List<String> _images = [
-    Assets.firstPersonalizedIntro,
-    Assets.secondPersonalizedIntro,
-    Assets.thirdPersonalizedIntro,
-    Assets.fourthPersonalizedIntro,
-    Assets.fifthPersonalizedIntro,
-  ];
-
+  const CarouselScreen({super.key});
+  
   @override
   Widget build(BuildContext context) {
+    final List<String> carouselImage = AppList.carouselImages;
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => CarouselViewModel(),
       builder: (context, viewModel, _) {
@@ -36,7 +29,7 @@ class CarouselScreen extends StatelessWidget {
                 left: 0,
                 right: 0,
                 child: Image.asset(
-                  _images[viewModel.currentPage],
+                  carouselImage[viewModel.currentPage],
                   height: 200.h,
                   fit: BoxFit.contain,
                 ),
@@ -68,7 +61,7 @@ class CarouselScreen extends StatelessWidget {
                               highlightWord: "Expert"),
                           CarouselItemScreen(
                               title: "Market Place",
-                              description: "Access certified trainers, dietitians, and healthcare pros for personalized guidance and support.",
+                              description: "Explore our curated marketplace for premium supplements, organic foods, and health tools designed to complement your journey.",
                               highlightWord: "Market"),
                         ],
                       ),
@@ -76,12 +69,12 @@ class CarouselScreen extends StatelessWidget {
                     SizedBox(height: 5.h),
                     CustomCarouselIndicator(
                       currentPage: viewModel.currentPage,
-                      totalPages: _images.length,
+                      totalPages: carouselImage.length,
                     ),
                     SizedBox(height: 30.h),
                   CustomButton(
                     onPressed: () {
-                      if (viewModel.currentPage < 4) {
+                      if (viewModel.currentPage < 3) {
                         viewModel.goToNextSlide();
                       } else {
                         navigationService.pushAndRemoveUntil(

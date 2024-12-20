@@ -41,37 +41,40 @@ class CustomButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: isEnabled ? onPressed : null,
         style: ElevatedButton.styleFrom(
-          backgroundColor: isEnabled
-              ? (backgroundColor ?? AppColors.green)
-              : AppColors.grey,
+          backgroundColor: isEnabled ? (backgroundColor ?? AppColors.green) : AppColors.grey,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius ?? 7.r),
             side: BorderSide(
-              color: borderColor ?? Colors.transparent,
-              width: 1.5,
+              color: borderColor ?? AppColors.transparent,
+              width: 1.5.w,
             ),
           ),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (imagePath != null)
-              Padding(
-                padding: EdgeInsets.only(right: 10.w),
-                child: Image.asset(
-                  imagePath!,
-                  width: 24.w,
-                  height: 24.h,
-                ),
-              ),
-            CustomText(
+        child: imagePath != null
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    imagePath!,
+                    width: 24.w,
+                    height: 24.h,
+                  ),
+                  SizedBox(width: 8.w),
+                  CustomText(
+                    text: text,
+                    fontWeight: fontWeight,
+                    color: isEnabled ? (textColor ?? AppColors.white) : AppColors.darkGrey,
+                    fontSize: fontSize ?? 16.sp,
+                  ),
+                ],
+              )
+            : CustomText(
               text: text,
+              textAlign: TextAlign.center,
               fontWeight: fontWeight,
               color: isEnabled ? (textColor ?? AppColors.white) : AppColors.darkGrey,
               fontSize: fontSize ?? 16.sp,
             ),
-          ],
-        ),
       ),
     );
   }
